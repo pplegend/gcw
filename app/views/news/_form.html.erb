@@ -15,7 +15,11 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= cktext_area :news, :content, :ckeditor => {:uiColor => "#AADC6E", :toolbar => "mini"} %>
+    <%= cktext_area :news, :content, input_html: { ckeditor: { filebrowserImageBrowseUrl: '/ckeditor/pictures', filebrowserImageUploadUrl: '/ckeditor/pictures' } } %>
+
+
+
+
   </div>
   <div class="actions">
     <%= f.submit %>

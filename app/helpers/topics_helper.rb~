@@ -1,0 +1,3 @@
+module TopicsHelper
+  @forum=Forum.find(params[:forum_id])
+end

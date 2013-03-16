@@ -12,11 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
     <%= cktext_area :news, :content, :ckeditor => {:uiColor => "#AADC6E", :toolbar => "mini"} %>
   </div>
   <div class="actions">

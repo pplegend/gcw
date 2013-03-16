@@ -1,0 +1,4 @@
+class AddCounterToUsers < ActiveRecord::Migration
+  def change
+  end
+end

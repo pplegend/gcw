@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Name:</b>
+  <%= @topic.title %>
+</p>
+<p>
+  
+  <%= @topic.body %>
+</p>
+
+<div id="posts">
+  <%= render :partial=> @posts, :locals => {:list =>true} %>
+</div>
+<div id="post-notice"></div>
+
+<% if signed_in? %>
+ <%= form_for Post.new, :remote=>true do |f| %>
+
+  <%= f.hidden_field :topic_id, :value =>@topic.id %>
+   <%= f.hidden_field :forum_id, :value =>@forum.id %>
+  <%= f.hidden_field :user_id, :value =>current_user.id %>
+  <%= f.text_area :body, :rows =>8 %><br/>
+  <%= f.submit "Add post" %>
+
+ <% end %>
+<% else %>
+
+  <%= link_to "Sign in to post", signin_path %>
+<% end %>
+<%= link_to 'Edit', edit_forum_topic_path(@forum,@topic) %> |
+<%= link_to 'Back', forum_topics_path(@forum) %>

@@ -3,7 +3,7 @@
 <div class="navbar-inner">
 	<ul class="nav">
 		<li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">Home</a></li>
-		<li><a href="/about/us">Forum</a></li>
+		<li><%= link_to "Forum", forums_path %></li>
 		<li><a href="/about/us">Music download</a></li>
 		<li><a href="/about/us">Pictures</a></li>
 		<li><a href="/about/us">Events</a></li>

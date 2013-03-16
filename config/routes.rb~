@@ -1,5 +1,13 @@
 Guangchangwu::Application.routes.draw do
 
+  resources :forums do 
+    resources :topics do
+      resources :posts
+    end
+  end
+  resources :news
+
+  mount Ckeditor::Engine => '/ckeditor'
 
   match '/signup', :to=>'users#new'
   match '/signin', :to=>'sessions#new'
@@ -12,7 +20,6 @@ Guangchangwu::Application.routes.draw do
   resources :users do
     resources :uploads
   end
-  #resources :uploads
   resources :users
   resources :roles#only for admin
   #resources :roles, :only=> [:update, :destroy]

@@ -2,7 +2,7 @@ require 'digest'
 class User < ActiveRecord::Base
 
   email_regex= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  attr_accessible :username, :email, :password, :password_confirmation, :profile
+  attr_accessible :username, :email, :password, :password_confirmation, :profile, :last_login_at
   attr_accessor :password
   validates :username, :presence=>true,
                    :length =>{:maximum=>50 }
@@ -25,7 +25,10 @@ class User < ActiveRecord::Base
   def self.authenticate(email, submitted_password)
      user=find_by_email(email)
      return nil if user.nil?
-     return user if user.has_password?(submitted_password)
+     if user.has_password?(submitted_password)  
+	   user.update_column(:last_login_at, DateTime.current)
+            return user
+     end 
   end
 
   def self.authenticate_with_salt(id,cookie_salt)
@@ -37,6 +40,9 @@ class User < ActiveRecord::Base
        self.salt=make_salt if new_record?
        self.hashed_password=encrypt(password)
     end
+   
+	
+    
     def encrypt(string)
        secure_hash("#{salt}--#{string}")
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304063114) do
+ActiveRecord::Schema.define(:version => 20130316051607) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -29,9 +29,25 @@ ActiveRecord::Schema.define(:version => 20130304063114) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "forums", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "topics_count"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "topic_id"
+    t.integer  "user_id"
+    t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -45,6 +61,16 @@ ActiveRecord::Schema.define(:version => 20130304063114) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id", :null => false
     t.integer "user_id", :null => false
+  end
+
+  create_table "topics", :force => true do |t|
+    t.integer  "forum_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "posts_count"
+    t.text     "body"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "uploads", :force => true do |t|
@@ -67,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20130304063114) do
     t.string   "salt"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "posts_count"
   end
 
   add_index "users", ["username"], :name => "index_users_on_username"

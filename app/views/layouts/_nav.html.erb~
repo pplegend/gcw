@@ -3,7 +3,7 @@
 <div class="navbar-inner">
 	<ul class="nav">
 		<li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">Home</a></li>
-		<li><a href="/about/us">Forum</a></li>
+		<li><%= link_to "forum", forums_path %></li>
 		<li><a href="/about/us">Music download</a></li>
 		<li><a href="/about/us">Pictures</a></li>
 		<li><a href="/about/us">Events</a></li>
@@ -12,7 +12,11 @@
 		<li class=" <%= 'active' if params[:controller] == 'types' %>"><a href="/categories" >Products</a>
 		</li>
 		<li class="<%= 'active' if params[:controller] == 'news' %>"><a href="/news">News</a></li>
-		<% if current_user %><li><a>Log out</a></li> <% else %> <li><a>Log in</a></li><% end %>	
+		<% if current_user %>
+		  <li><%= link_to "Log out", signout_path %></li> 
+		<% else %> 
+		  <li><%= link_to "Sign in", signin_path %></li>
+		<% end %>	
 	</ul>
 </div>
 </div>

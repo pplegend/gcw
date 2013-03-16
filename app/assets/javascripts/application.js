@@ -13,4 +13,4 @@
 //= require jquery_ujs1.7
 //= require jquery-fileupload
 //= require ckeditor/init
-//= application
+
