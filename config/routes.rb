@@ -18,6 +18,7 @@ Guangchangwu::Application.routes.draw do
   resources :users do
     resources :uploads
   end
+  resources :uploads
   resources :users
   resources :roles#only for admin
   #resources :roles, :only=> [:update, :destroy]

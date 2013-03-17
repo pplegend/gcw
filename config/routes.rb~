@@ -1,12 +1,10 @@
 Guangchangwu::Application.routes.draw do
 
   resources :forums do 
-    resources :topics do
-      resources :posts
-    end
+    resources :topics 
   end
   resources :news
-
+  resources :posts
   mount Ckeditor::Engine => '/ckeditor'
 
   match '/signup', :to=>'users#new'

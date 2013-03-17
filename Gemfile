@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem "ckeditor"
 gem "paperclip", "~> 3.0"
 gem 'twitter-bootstrap-rails'
-gem 'jquery-fileupload-rails'
+gem 'jquery-fileupload-rails','~>0.4.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
