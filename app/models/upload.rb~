@@ -1,9 +1,9 @@
 class Upload < ActiveRecord::Base
-  attr_accessible :upload
+  attr_accessible :upload, :user_id
   has_attached_file :upload
   belongs_to :user
   include Rails.application.routes.url_helpers
-
+  include PgSearch
   def to_jq_upload
     {
       "name" => read_attribute(:upload_file_name),

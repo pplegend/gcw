@@ -1,4 +1,4 @@
-<h2>Forums</h2>
+
 <% if signed_in? and current_user.has_role?('Moderator') %>
 <p><%= link_to 'Create New Forum', new_forum_path %></p>
 <% end %>

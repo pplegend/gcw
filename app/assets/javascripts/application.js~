@@ -9,8 +9,36 @@
 //
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
-//= require jquery
-//= require jquery_ujs
+//= require jquery1.7
+//= require jquery_ujs1.7
 //= require jquery-fileupload
 //= require ckeditor/init
 //= require_tree .
+
+ $(document).ready(function() {
+           // Prepare layout options.
+        	$('.dropdown-toggle').dropdown();
+        //sign in button
+            $(".dropdown-signin").click(function(e) {          
+				e.preventDefault();
+                $("#signin_menu").toggle();
+				
+            });
+			
+			$("#signin_menu").mouseup(function() {
+				return false
+			});
+			$(document).mouseup(function(e) {
+				if($(e.target).parent("a.dropdown-signin").length==0) {
+					
+					$("#signin_menu").hide();
+				}
+			});
+
+
+
+
+});
+
+
+

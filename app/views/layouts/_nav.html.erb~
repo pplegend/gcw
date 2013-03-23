@@ -2,21 +2,35 @@
    
 <div class="navbar-inner">
 	<ul class="nav">
-		<li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">Home</a></li>
-		<li><%= link_to "forum", forums_path %></li>
-		<li><a href="/about/us">Music download</a></li>
-		<li><a href="/about/us">Pictures</a></li>
-		<li><a href="/about/us">Events</a></li>
-		<li><a href="/about/us">Team</a></li>
-		<li><a href="/about/us">Shopping</a></li>
-		<li class=" <%= 'active' if params[:controller] == 'types' %>"><a href="/categories" >Products</a>
-		</li>
-		<li class="<%= 'active' if params[:controller] == 'news' %>"><a href="/news">News</a></li>
-		<% if current_user %>
-		  <li><%= link_to "Log out", signout_path %></li> 
-		<% else %> 
-		  <li><%= link_to "Sign in", signin_path %></li>
-		<% end %>	
+		<li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">主页</a></li>
+		<li><a href="#">广场舞视频</a></li>
+		<li><a href="/musics">广场舞歌曲下载</a></li>
+		<li><a href="#">广场舞教学视频</a></li>
+		<li><%= link_to "广场舞论坛", forums_path %></li>
+		
+		<li><a href="#">图片</a></li>
+		<li class="<%= 'active' if params[:controller] == 'news' %>"><a href="/news">新闻</a></li>
+		<li><a href="#">活动</a></li>
+		<li><a href="#">团体</a></li>
+		<li><a href="#">广场舞服装</a></li>
+
+
 	</ul>
+	<% unless signed_in? %>
+	  <ul class="nav nav-pills">
+    		<li><a href="<%= signup_path %>">Have an account?</a></li>
+    		<li class="dropdown" >
+       		<a class="dropdown-toggle dropdown-signin" data-toggle="dropdown">sign in<b class="caret"></b></a>
+   		</li>
+	</ul>
+	<% else %>
+	<ul class="nav nav-pills">
+     	  <li><%= link_to current_user.username, current_user %> </li>
+     	  <li><%= link_to "Log out", signout_path %></li>
+ 	</ul>
+	<% end %>
 </div>
+</div>
+
+<div class="signin_menu" id="signin_menu"><%= render :template=>"/sessions/new/" %></div>
 </div>

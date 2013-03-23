@@ -1,5 +1,9 @@
 Guangchangwu::Application.routes.draw do
 
+  resources :slides
+
+  resources :musics
+
   resources :forums do 
     resources :topics 
   end
@@ -10,6 +14,8 @@ Guangchangwu::Application.routes.draw do
   match '/signup', :to=>'users#new'
   match '/signin', :to=>'sessions#new'
   match '/signout', :to=>'sessions#destroy'
+  match '/download', :to=>'musics#download'
+  match '/uploads/search', :to=>'uploads#search_uploads'
   resources :sessions, :only=>[:new, :create, :destroy]
   root :to=>'users#index'
   resources :users do

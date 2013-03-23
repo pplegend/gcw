@@ -1,0 +1,58 @@
+// Place all the styles related to the Slides controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+		.slides_container {
+			
+			display:none;
+			
+			
+		}
+
+		.slides_container div {
+			
+			height:270px;
+			
+			
+		}
+
+		.pagination {
+			list-style:none;
+			margin:0;
+			padding:0;
+			text-align:center;
+			float:right;
+		}
+
+		.pagination .current a {
+			color:red;
+		}
+		#slides .prev,#slides .next{
+			display:none;
+		}
+
+
+
+.focusTitle {
+    clear: both;
+    height: 33px;
+    line-height: 30px;
+    margin-left: 16px;
+    border-bottom:1px solid gray;
+}
+.focusTitle h2 {
+    float: left;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 12px;
+    font-weight: normal;
+}
+.focusTitle .time {
+    float: right;
+    padding-right: 6px;
+}
+.cDGray, .cDGray:visited, .cDGray a {
+    color: #727171;
+}
+.colM .content {
+    margin: 0 0 0 16px;
+}

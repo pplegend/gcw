@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Video:</b>
+  <%= @music.video %>
+</p>
+
+<p>
+  <b>Video file name:</b>
+  <%= @music.video_file_name %>
+</p>
+
+<p>
+  <b>Counter:</b>
+  <%= @music.counter %>
+</p>
+
+
+<%= link_to 'Edit', edit_music_path(@music) %> |
+<%= link_to 'Back', musics_path %>

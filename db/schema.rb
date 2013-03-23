@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316051607) do
+ActiveRecord::Schema.define(:version => 20130323073148) do
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
@@ -37,11 +37,26 @@ ActiveRecord::Schema.define(:version => 20130316051607) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "musics", :force => true do |t|
+    t.string   "video_file_name"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "counter",         :default => 0
+  end
+
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "pg_search_documents", :force => true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "posts", :force => true do |t|
@@ -61,6 +76,17 @@ ActiveRecord::Schema.define(:version => 20130316051607) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id", :null => false
     t.integer "user_id", :null => false
+  end
+
+  create_table "slides", :force => true do |t|
+    t.string   "link"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "title"
   end
 
   create_table "topics", :force => true do |t|
@@ -87,12 +113,12 @@ ActiveRecord::Schema.define(:version => 20130316051607) do
     t.string   "username"
     t.string   "email"
     t.string   "hashed_password"
-    t.boolean  "enabled"
+    t.boolean  "enabled",         :default => true, :null => false
     t.text     "profile"
     t.datetime "last_login_at"
     t.string   "salt"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "posts_count"
   end
 

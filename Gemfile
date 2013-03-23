@@ -1,15 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
-
+gem 'pg_search'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'will_paginate', '~> 3.0'
-gem 'sqlite3'
+gem 'pg'
 gem "ckeditor"
 gem "paperclip", "~> 3.0"
 gem 'twitter-bootstrap-rails'
 gem 'jquery-fileupload-rails','~>0.4.0'
+gem 'paperclip-ffmpeg'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

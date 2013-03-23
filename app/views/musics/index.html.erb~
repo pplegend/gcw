@@ -1,0 +1,29 @@
+<h1>Listing musics</h1>
+
+<table>
+  <tr>
+   
+    <th>Video file name</th>
+    <th>Counter</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @musics.each do |music| %>
+  <tr>
+    
+    <td><%= music.video_file_name %></td>
+    <td><%= music.counter %></td>
+    <td><%= link_to 'Show', music %></td>
+    <td><%= link_to 'Edit', edit_music_path(music) %></td>
+    <td><%= link_to 'Destroy', music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+ <%= link_to "#{music.video_file_name}", :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=music.id %> 
+
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Music', new_music_path %>

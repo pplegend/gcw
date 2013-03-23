@@ -9,6 +9,5 @@
 <body>
    <%= render "layouts/nav" %>
    <%= yield %>
-<%= current_user.id %>
 </body>
 </html>

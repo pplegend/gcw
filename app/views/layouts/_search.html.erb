@@ -1,0 +1,13 @@
+
+
+
+
+<div>
+<%= form_tag uploads_search_path, :class=>"form-search", method: :get do %>
+  
+    <%= text_field_tag :search,params[:search], :class=>"input-medium search-query"  %>
+    <%= submit_tag "Search", :class=>"btn", name: nil %>
+
+<% end %>
+<%= link_to "上传视频", new_upload_path %>
+</div>

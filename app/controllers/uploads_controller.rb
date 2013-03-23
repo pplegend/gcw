@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
+  before_filter :authenticate, :only=> [:new,:create, :destroy]
   def index
     @uploads = current_user.uploads.all
 

@@ -1,0 +1,57 @@
+
+	
+	<script>
+			$(function(){
+			// Set starting slide to 1
+			var startSlide = 1;
+			// Get slide number if it exists
+			if (window.location.hash) {
+				startSlide = window.location.hash.replace('#','');
+			}
+			// Initialize Slides
+			$('#slides').slides({
+				preload: true,
+				generatePagination: true,
+				play: 5000,
+				pause: 2500,
+				hoverPause: true,
+				// Get the starting slide
+				start: startSlide,
+				animationComplete: function(current){
+					// Set the slide number as a hash
+					window.location.hash = '#' + current;
+				}
+			});
+		});
+	</script>
+<div class="row">
+<div id="slides" class="offset1 span4">
+		<div class="slides_container">
+			<% @slides.each do |slide| %>
+				<div class="slide">
+    				<%= link_to image_tag(slide.image), slide.link %>
+    				<%= link_to 'Show', slide %>
+    				<%= link_to 'Edit', edit_slide_path(slide) %>
+    				<%= link_to 'Destroy', slide, method: :delete, data: { confirm: 'Are you sure?' } %>
+ 				</div>
+			<% end %>
+		</div>
+</div>
+<div  class="span5 colM">
+<%-# div for title -%>
+  <div class="focusTitle">
+ <h2> <%= link_to image_tag('title_jrjj.gif'), "localhost:3000" %></h2>
+ <span class="time cDGray"><%= Time.now.strftime("%Y-%m-%d %l:%M") %>  </span>
+ </div>
+<%-# div for news list -%>
+  <div class="content focusText">
+   
+  </div>
+</div>
+
+<div class="span3" style="background-color:yellow">
+ sfe
+</div>
+</div>
+
+
