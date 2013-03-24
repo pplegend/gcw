@@ -15,8 +15,9 @@ Guangchangwu::Application.routes.draw do
   match '/signin', :to=>'sessions#new'
   match '/signout', :to=>'sessions#destroy'
   match '/download', :to=>'musics#download'
+  match '/uploads/search', :to=>'uploads#search_uploads'
   resources :sessions, :only=>[:new, :create, :destroy]
-  root :to=>'users#index'
+  root :to=>'home#index'
   resources :users do
     resources :roles
   end

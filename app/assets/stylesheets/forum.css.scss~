@@ -1,0 +1,4 @@
+#forum_description{
+  width:30px;
+  height:5px;
+}

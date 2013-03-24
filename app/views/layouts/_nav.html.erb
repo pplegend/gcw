@@ -1,35 +1,38 @@
-<div id="header" class="navbar">
+
    
-<div class="navbar-inner">
-	<ul class="nav">
+<div class="navbar row">
+    <div class="navbar-inner">
+	<ul class="nav ">
 		<li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">主页</a></li>
-		<li><a href="#">广场舞视频</a></li>
-		<li><a href="/musics">广场舞歌曲下载</a></li>
+		<li><%= link_to "广场舞视频", uploads_path %></li>
+		<li><%= link_to "广场舞歌曲下载", musics_path %></li>
 		<li><a href="#">广场舞教学视频</a></li>
-		<li><%= link_to "广场舞论坛", forums_path %></li>
+		<li><%= link_to "论坛", forums_path %></li>
 		
 		<li><a href="#">图片</a></li>
 		<li class="<%= 'active' if params[:controller] == 'news' %>"><a href="/news">新闻</a></li>
 		<li><a href="#">活动</a></li>
 		<li><a href="#">团体</a></li>
 		<li><a href="#">广场舞服装</a></li>
-	</ul>
+	
 
 	<% unless signed_in? %>
+		<li><a href="<%= signup_path %>">注册</a></li>
 	  <ul class="nav nav-pills">
-    		<li><a href="<%= signup_path %>">Have an account?</a></li>
     		<li class="dropdown" >
-       		<a class="dropdown-toggle dropdown-signin" data-toggle="dropdown">sign in<b class="caret"></b></a>
+       		<a class="dropdown-toggle dropdown-signin" data-toggle="dropdown">登录<b class="caret"></b></a>
    		</li>
 	</ul>
 	<% else %>
-	<ul class="nav nav-pills">
+	
      	  <li><%= link_to current_user.username, current_user %> </li>
-     	  <li><%= link_to "Log out", signout_path %></li>
- 	</ul>
+     	  <li><%= link_to "退出", signout_path %></li>
+
 	<% end %>
-</div>
+</ul>
 </div>
 
+
 <div class="signin_menu" id="signin_menu"><%= render :template=>"/sessions/new/" %></div>
+</div>
 </div>

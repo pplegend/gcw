@@ -9,6 +9,6 @@
     <%= f.text_area :description %>
   </div>
 
-  <p> <%= f.submit "创建",:class=>'btn' %>
+  <p> <%= f.submit "Submit",:class=>'btn' %>
     <%= link_to '取消', forums_path, :class=>"btn" %></p>
 <% end %>

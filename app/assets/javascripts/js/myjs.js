@@ -1,4 +1,5 @@
 $(document).ready(function() {
+          
            // Prepare layout options.
         	$('.dropdown-toggle').dropdown();
         //sign in button
@@ -18,8 +19,21 @@ $(document).ready(function() {
 				}
 			});
 
-
+		$('#new_forum_btn').click(function(){
+	
+		 $(this).hide();
+		 $(".new_forum_form").css("display","block");
+		  
+	  });
+	  
+	  
+	  $('#new_topic_btn').click(function(){
+			
+			 $(this).hide();
+			 $(".new_topic_form").css("display","block");
+			  
+		  });
 
 
 });
-
+ 

@@ -1,13 +1,21 @@
 
 
 
+<div class="container">
+<div  class="row" id="search_div">
 
-<div>
+<div class="span3">
 <%= form_tag uploads_search_path, :class=>"form-search", method: :get do %>
-  
+   <div class="input-append">
     <%= text_field_tag :search,params[:search], :class=>"input-medium search-query"  %>
-    <%= submit_tag "Search", :class=>"btn", name: nil %>
-
+    <%= submit_tag "搜索", :class=>"btn", name: nil %>
+  </div>
 <% end %>
-<%= link_to "上传视频", user_uploads_path(current_user) %>
 </div>
+<div class="span4" style="margin:5px;"> 推荐搜索</div>
+<div class="span3">
+<%= link_to "上传视频", new_upload_path, :class=>'btn'%>
+</div>
+</div>
+</div>
+

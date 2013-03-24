@@ -3,7 +3,7 @@ class UploadsController < ApplicationController
   # GET /uploads.json
   before_filter :authenticate, :only=> [:new,:create, :destroy]
   def index
-    @uploads = current_user.uploads.all
+    @uploads = Uploads.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class UploadsController < ApplicationController
   def search_uploads
     search=params[:search]
     @uploads=Upload.where("upload_file_name LIKE '%#{search}%'")
-    @musics=Music.where("upload_file_name LIKE '%#{search}%'")
+    @musics=Music.where("video_file_name LIKE '%#{search}%'")
   end
   # GET /uploads/1
   # GET /uploads/1.json

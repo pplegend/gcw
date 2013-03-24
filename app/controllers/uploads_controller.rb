@@ -3,7 +3,7 @@ class UploadsController < ApplicationController
   # GET /uploads.json
   before_filter :authenticate, :only=> [:new,:create, :destroy]
   def index
-    @uploads = current_user.uploads.all
+    @uploads = Upload.all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,7 +1,20 @@
 
+
+<div id="search_results" >
+<p class="breadcrumb " style="text-align:left" > 搜索结果</p>
+
 <% if @uploads %>
 <% @uploads.each do |upload| %>
-  <%= upload.upload_file_name %>
+<div class="row" style="text-align:left">
+  <p><%= link_to upload.upload_file_name,upload_path(upload) %></p>
+  <p><span class="green_font"> 分类：</span>
+     <span> <%= link_to "广场舞视频",uploads_path %></span> 
+     <span class="green_font">点击：</span>
+     <span> 23</span>
+     <span class="green_font">日期：</span>
+     <span> <%= upload.created_at %></span>
+  </p>
+</div>
 <% end %>
 <% else %>
 <h3>No result</h3>
@@ -10,8 +23,19 @@
 
 <% if @musics %>
 <% @musics.each do |music| %>
-  <%= music.upload_file_name %>
+ <div class="row" style="text-align:left">
+  <p><%= link_to music.video_file_name, music_path(music) %></p>
+  <%-#= music.video.url -%>
+  <p><span class="green_font"> 分类：</span>
+     <span> <%= link_to "广场舞歌曲", musics_path %></span> 
+     <span class="green_font">点击：</span>
+     <span> 23</span>
+     <span class="green_font">日期：</span>
+     <span> <%= music.created_at %></span>
+  </p>
+ </div>
 <% end %>
 <% else %>
 <h3>No music result</h3>
 <% end %>
+</div>

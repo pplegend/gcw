@@ -3,7 +3,7 @@ Guangchangwu::Application.routes.draw do
   resources :slides
 
   resources :musics
-
+  resources :topics, :only=>[:create,:destroy]
   resources :forums do 
     resources :topics 
   end
@@ -17,7 +17,7 @@ Guangchangwu::Application.routes.draw do
   match '/download', :to=>'musics#download'
   match '/uploads/search', :to=>'uploads#search_uploads'
   resources :sessions, :only=>[:new, :create, :destroy]
-  root :to=>'users#index'
+  root :to=>'home#index'
   resources :users do
     resources :roles
   end
