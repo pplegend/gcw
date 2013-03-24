@@ -4,6 +4,11 @@ class Upload < ActiveRecord::Base
   belongs_to :user
   include Rails.application.routes.url_helpers
   include PgSearch
+  multisearchable :against => :upload_file_name
+  pg_search_scope :search,:against => :upload_file_name,
+                  :using => {
+                    :tsearch => { dictionary: "english"}
+                  }
   def to_jq_upload
     {
       "name" => read_attribute(:upload_file_name),

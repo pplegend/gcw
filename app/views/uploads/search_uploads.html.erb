@@ -1,3 +1,17 @@
+
+<% if @uploads %>
 <% @uploads.each do |upload| %>
   <%= upload.upload_file_name %>
+<% end %>
+<% else %>
+<h3>No result</h3>
+<% end %>
+
+
+<% if @musics %>
+<% @musics.each do |music| %>
+  <%= music.video_file_name %>
+<% end %>
+<% else %>
+<h3>No music result</h3>
 <% end %>

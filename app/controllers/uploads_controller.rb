@@ -10,7 +10,11 @@ class UploadsController < ApplicationController
       format.json { render json: @uploads.map{|upload| upload.to_jq_upload } }
     end
   end
-
+  def search_uploads
+    search=params[:search]
+    @uploads=Upload.where("upload_file_name LIKE '%#{search}%'")
+    @musics=Music.where("video_file_name LIKE '%#{search}%'")
+  end
   # GET /uploads/1
   # GET /uploads/1.json
   def show

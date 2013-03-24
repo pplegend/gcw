@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
+  before_filter :authenticate, :only=> [:new,:create, :destroy]
   def index
     @uploads = current_user.uploads.all
 
@@ -9,7 +10,11 @@ class UploadsController < ApplicationController
       format.json { render json: @uploads.map{|upload| upload.to_jq_upload } }
     end
   end
-
+  def search_uploads
+    search=params[:search]
+    @uploads=Upload.where("upload_file_name LIKE '%#{search}%'")
+    @musics=Music.where("upload_file_name LIKE '%#{search}%'")
+  end
   # GET /uploads/1
   # GET /uploads/1.json
   def show

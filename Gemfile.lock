@@ -70,9 +70,6 @@ GEM
     paperclip-ffmpeg (0.10.2)
       paperclip (>= 2.5.2)
     pg (0.14.1)
-    pg_search (0.5.7)
-      activerecord (>= 3)
-      activesupport (>= 3)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -133,7 +130,6 @@ DEPENDENCIES
   paperclip (~> 3.0)
   paperclip-ffmpeg
   pg
-  pg_search
   rails (= 3.2.6)
   sass-rails (~> 3.2.3)
   twitter-bootstrap-rails
