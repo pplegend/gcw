@@ -2,3 +2,64 @@
   width:200px;
   height:40px;
 }
+  a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
+
+.messagepop {
+  background-color:#FFFFFF;
+  border:1px solid #999999;
+  cursor:default;
+  display:none;
+  margin-top: 15px;
+  text-align:left;
+  z-index:50;
+  padding: 25px 25px 20px;
+}
+
+
+.messagepop p, .messagepop.div {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8px 0;
+  padding-bottom: 8px;
+}
+#topic_body{
+ width:930px;
+}
+#topic_title{
+ width:930px;
+}
+
+.forum_div{
+ 
+ background-color:#F2F2F2;
+}
+#post_body{
+
+}
+
+.backToTop {
+    display: none;
+    width: 18px;
+    line-height: 1.2;
+    padding: 5px 0;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    position: fixed;
+    _position: absolute;
+    right: 10px;
+    bottom: 100px;
+    _bottom: "auto";
+    cursor: pointer;
+    opacity: .6;
+    filter: Alpha(opacity=60);
+}
+#news_title{
+  width:506px;
+  
+}
+

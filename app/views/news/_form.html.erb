@@ -1,27 +1,12 @@
 <%= form_for(@news) do |f| %>
-  <% if @news.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@news.errors.count, "error") %> prohibited this news from being saved:</h2>
-
-      <ul>
-      <% @news.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= cktext_area :news, :content, input_html: { ckeditor: { filebrowserImageBrowseUrl: '/ckeditor/pictures', filebrowserImageUploadUrl: '/ckeditor/pictures' } } %>
 
-
-
-
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "提交", :class=>'btn' %>
   </div>
 <% end %>

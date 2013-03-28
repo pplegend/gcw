@@ -67,11 +67,7 @@ div {
     list-style: square;
   }
 }
-#search_div{
 
-
-
-}
 .green_font{
  color:#088A08;
  font:bold;

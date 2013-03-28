@@ -1,33 +1,59 @@
-<p id="notice"><%= notice %></p>
-
-
-<p>
-  <b>Name:</b>
-  <%= @topic.title %>
-</p>
-<p>
-  
-  <%= @topic.body %>
-</p>
-
-<div id="posts">
-  <%= render :partial=> @posts, :locals => {:list =>true} %>
+<div class="container" >
+	<ul class="breadcrumb">
+  		<li><a href="/">主页</a> <span class="divider">/</span></li>
+		<li><%= link_to "广场舞论坛", forums_path %><span class="divider">/</span></li>
+  		<li><%= link_to @topic.forum.name,@topic.forum %> <span class="divider">/</span></li>
+  		<li><%= link_to @topic.title, @topic , :class=>"active" %><span class="divider">/</span></li>
+	</ul>
 </div>
-<div id="post-notice"></div>
 
-<% if signed_in? %>
- <%= form_for Post.new, :remote=>true do |f| %>
+
+
+<div class="container forum_div ">
+	<div class="row">
+		<div class="span2 user_div"><%= @topic.user.username %></div>
+		<div class="span10">
+			<p class="alert alert-info"><%= @topic.title %></p>
+			<%= @topic.body %>
+		</div>
+	</div>
+
+	<hr>
+	<div id="posts" class="row">
+  		<%= render :partial=> @posts, :locals => {:list =>true} %>
+	</div>
+	<div id="post-notice"></div>
+</div>
+
+<div class="container">
+<%= button_tag(type: 'submit', class: "btn btn-primary", id:"topic_form") do %>
+ <i class="icon-plus"></i> 发贴
+<% end %>
+<%= page_navigation_links @posts %>
+</div>
+<div class="messagepop pop container">
+ <%= render "topics/form" %>
+</div>
+
+
+<div class="container">
+ <div class="row">
+ <div class="span2"> </div>
+ <div class="span10">
+ <% if signed_in? %>
+ <%= form_for @post, :remote=>true do |f| %>
 
   <%= f.hidden_field :topic_id, :value =>@topic.id %>
   <input type="hidden" name="forum_id" value=<%=@forum.id %> >
   <%= f.hidden_field :user_id, :value =>current_user.id %>
-  <%= f.text_area :body, :rows =>8 %><br/>
-  <%= f.submit "Add post" %>
+  <%= f.text_area :body, :rows=>8,:class=>'span8' %><br/>
+  <%= f.submit "添加回复",:class=>'btn' %>
 
  <% end %>
 <% else %>
 
   <%= link_to "Sign in to post", signin_path %>
 <% end %>
-<%= link_to 'Edit', edit_forum_topic_path(@forum,@topic) %> |
-<%= link_to 'Back', forum_topics_path(@forum) %>
+ </div>
+ </div>
+</div>

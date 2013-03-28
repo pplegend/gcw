@@ -1,0 +1,6 @@
+
+<div class="container">
+<%= render 'form' %>
+
+<%= link_to '返回', slides_path %>
+</div>

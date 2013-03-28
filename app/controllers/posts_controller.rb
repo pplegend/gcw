@@ -32,8 +32,10 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
     @topic=Topic.find(params[:post][:topic_id])
+    params[:post][:cixu]=@topic.posts_count+1
+    @post = Post.new(params[:post])
+    
     @forum=Forum.find(params[:forum_id])
     respond_to do |format|
       if @post.save

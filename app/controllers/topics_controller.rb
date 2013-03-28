@@ -6,8 +6,8 @@ class TopicsController < ApplicationController
    before_filter :get_forum
   def index
   
-    @topics = Topic.where(:forum_id=>@forum).paginate(:page => params[:page],:per_page => 30).order('created_at DESC')
-
+    @topics = Topic.where(:forum_id=>@forum).paginate(:page => params[:page],:per_page => 3).order('created_at DESC')
+    @topic=Topic.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @topics }
@@ -18,7 +18,10 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
-    @posts=@topic.posts
+    @topic.click_count=@topic.click_count+1
+    @topic.save
+    @posts=@topic.posts.paginate(:page => params[:page],:per_page => 2).order('created_at ASC')
+    @post=Post.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @topic }
@@ -28,7 +31,7 @@ class TopicsController < ApplicationController
   # GET /topics/new
   # GET /topics/new.json
   def new
-    @topic = Topic.new
+    
 
     respond_to do |format|
       format.html # new.html.erb

@@ -59,9 +59,9 @@ CKEDITOR.editorConfig = function( config )
 CKEDITOR.editorConfig = function( config )
 {
    config.language = 'zh-cn';    
-   config.uiColor = '#AADC22';
+   config.uiColor = '#F2F2F2';
    config.toolbar = 'Full';
-   config.width = 600;
+   //config.width = 600;
    config.resize_enabled = false;
    config.toolbar_Full = [['Image','Smiley','Bold','TextColor','BGColor']];
     /* Filebrowser routes */

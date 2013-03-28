@@ -1,35 +1,55 @@
+<div class="container" >
+	<ul class="breadcrumb">
+  		<li><a href="/">主页</a> <span class="divider">/</span></li>
+		<li><%= link_to "广场舞论坛", forums_path %><span class="divider">/</span></li>
+  		<li><%= link_to @forum.name,forum_path(@forum), :class=>"active" %> <span class="divider">/</span></li>
+  	
+	</ul>
+</div>
+
 <div class="container">
+  <div class="span2">
+	<%= button_tag(type: 'submit', class: "btn btn-primary", id:"topic_form") do %>
+ 		<i class="icon-plus"></i> 发贴
+	<% end %>
+  </div>
+  
+  <div ><%= page_navigation_links(@topics) %></div>
+</div>
+
+<div class="messagepop pop container">
+ <%= render "topics/form" %>
+</div>
+
+<div class="container well" id="topic_list">
 <p id="notice"><%= notice %></p>
-<%= link_to '发贴', new_forum_topic_path(@forum) %>
-<button class="btn" id="new_topic_btn"><i class='icon-plus'></i>发贴</button>
-<table>
+
+<table style="width:100%" class="table table-striped">
   <tr>
-    <th>Forum</th>
-    <th>User</th>
-    <th>Name</th>
-    <th>Posts count</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>话题</th>
+    <th>作者</th>
+    <th>回复/查看</th>
+    <th>最后发表</th>
   </tr>
-
-
-
 
 <% @topics.each do |topic| %>
   <tr>
-    <td><%= topic.forum_id %></td>
-    <td><%= topic.user_id %></td>
-    <td><%=link_to topic.title, forum_topic_path(@forum,topic) %></td>
     
-    <td><%= topic.posts_count %></td>
-    <td><%= link_to 'Show', forum_topic_path(@forum,topic) %></td>
-    <td><%= link_to 'Edit', edit_forum_topic_path(@forum,topic) %></td>
-    <td><%= link_to 'Destroy', forum_topic_path(@forum,topic), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%=link_to topic.title, forum_topic_path(@forum,topic) %></td>
+    <td><%= topic.user.username %></td>
+    <td><%= topic.posts_count %>/<%= topic.click_count %></td>
+    <% if topic.posts.last %>
+     <td><%= topic.posts.last.user.username %></td>
+    <% else %>
+     <td>没有回复</td>
+    <% end %>
   </tr>
 <% end %>
 </table>
-<%= will_paginate @topics %>
+
 <br />
+</div>
+<div class="container">
+	<%= page_navigation_links @topics %>
 </div>
 

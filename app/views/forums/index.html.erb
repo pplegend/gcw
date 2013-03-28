@@ -1,4 +1,60 @@
+<div class="container">
+     <div class="row">
+	<div class="span4">
+		<div id="slides">
+				<div class="slides_container">
+					<div class="slide">
+						<%= link_to image_tag("slide-1.jpg"),root_path,:class=>'slide_image_size' %>
+					
+						<div class="caption">
+							<p>Happy Bokeh Thursday!</p>
+						</div>
+					</div>
+					<div class="slide">
+						<%= link_to image_tag("slide-2.jpg"),root_path,:class=>'slide_image_size' %>
+						<div class="caption">
+							<p>Taxi</p>
+						</div>
+					</div>
+					<div class="slide">
+						<%= link_to image_tag("slide-3.jpg"),root_path ,:class=>'slide_image_size'%>
+						<div class="caption">
+							<p>Happy Bokeh raining Day</p>
+						</div>
+					</div>
+					<div class="slide">
+						<%= link_to image_tag("slide-4.jpg"),root_path ,:class=>'slide_image_size'%>
+						<div class="caption">
+							<p>We Eat Light</p>
+						</div>
+					</div>
+					<div class="slide">
+						<%= link_to image_tag("slide-1.jpg"),root_path,:class=>'slide_image_size' %>
+						<div class="caption">
+							<p>&ldquo;I must go down to the sea again, to the lonely sea and the sky...&rdquo;</p>
+						</div>
+					</div>
+					<div class="slide">
+						<%= link_to image_tag("slide-1.jpg"),root_path ,:class=>'slide_image_size'%>
+						<div class="caption">
+							<p>twelve.inch</p>
+						</div>
+					</div>
+					<div class="slide">
+						<%= link_to image_tag("slide-1.jpg"),root_path,:class=>'slide_image_size' %>
+						<div class="caption">
+							<p>Save my love for loneliness</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
 
+	</div>
+	<div class="span4">fwfew</div>
+	<div class="span4">243fds</div>
+     </div>
+</div>
 <div class="container">
 <table class="table table-striped table-bordered">  
 
@@ -8,7 +64,11 @@
       <td><h4><%= link_to h(forum.name), forum_path(forum.id) %></h4>  
           
        <font color="#848484"> <%=h forum.description %></font></td>  
-       <td><small><%= forum.topics_count %> </small>topics/posts</td> 
+	<% @posts_count=0 %>
+	<% forum.topics.each do |topic| %>
+	  <% @posts_count=@posts_count+topic.posts_count %> 
+	<% end %>
+       <td><small><%= forum.topics_count %> </small>/<%= @posts_count %></td> 
       <td> <% if forum.topics.last %>
        		<%= forum.topics.last.created_at %> <br/>
        		by <font color="#5882FA"><%= forum.topics.last.user.username %></font>

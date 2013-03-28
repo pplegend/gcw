@@ -1,8 +1,21 @@
-<%= div_for post do %>
-  <span class="dateandoptions">Posted <%= time_ago_in_words(post.created_at) %>ago<br/>
-  <%= link_to 'Delete', post_path(post), :method=>:delete, :class=>"delete", :remote=>true %>
- </span>
-  <p><b><%= post.user.username %></b>wrote:</p>
-  <br/>
- <%= content_tag(:p, post.body, :class=>"post-body") %>
+
+<%= div_for post  do %>
+  
+  <%#-= link_to 'Delete', post_path(post), :method=>:delete, :class=>"delete", :remote=>true -%>
+ 
+  <div class="span2 "><%= link_to post.user.username, post.user %></div>
+  
+  <div class="span10" style="background-color:white;margin:2px;width:796px;">
+	<p>
+	  <span class="dateandoptions">发表于 <%= post.created_at %></span>	
+	  <span style="float:right"><%= post.cixu %>楼</span>
+	</p>
+	<hr>
+	
+	<%= content_tag(:p, post.body, :class=>"post-body") %>
+	<button class="btn btn-info reply_button" style="margin:15px 0"> 回复本帖</button>
+	<input type="hidden" value="<%=post.user.username%>"/>
+ </div>
+
 <% end %>
+

@@ -1,0 +1,11 @@
+class ChangeCountTypeForTopicAndPost < ActiveRecord::Migration
+  def up
+   remove_column :topics, :post_count
+   add_column :topics, :post_count, :integer,:default=>0
+   remove_column :forums, :topic_count
+   add_column :forums, :topic_count, :integer,:default=>0
+  end
+
+  def down
+  end
+end
