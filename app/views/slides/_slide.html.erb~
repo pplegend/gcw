@@ -1,0 +1,9 @@
+<div class="slide">
+
+<%= link_to image_tag(slide.image), slide.link %>
+
+	<div class="caption">
+		<p><%= slide.title %></p>
+	</div>
+
+</div>

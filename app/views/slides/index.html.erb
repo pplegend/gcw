@@ -1,18 +1,11 @@
-
+<div class="container">
 
 <div class="row">
-<div id="slides" class="offset1 span4">
+<div id="slides" >
 		<div class="slides_container">
-			<% @slides.each do |slide| %>
-				<div class="slide">
-    				<%= link_to image_tag(slide.image), slide.link %>
-    				<%= link_to 'Show', slide %>
-    				<%= link_to 'Edit', edit_slide_path(slide) %>
-    				<%= link_to 'Destroy', slide, method: :delete, data: { confirm: 'Are you sure?' } %>
- 				</div>
-			<% end %>
+			<%= render @slides %>
 		</div>
 </div>
 
 
-
+</div>

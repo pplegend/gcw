@@ -3,55 +3,30 @@
 	<div class="span4">
 		<div id="slides">
 				<div class="slides_container">
-					<div class="slide">
-						<%= link_to image_tag("slide-1.jpg"),root_path,:class=>'slide_image_size' %>
-					
-						<div class="caption">
-							<p>Happy Bokeh Thursday!</p>
-						</div>
-					</div>
-					<div class="slide">
-						<%= link_to image_tag("slide-2.jpg"),root_path %>
-						<div class="caption">
-							<p>Taxi</p>
-						</div>
-					</div>
-					<div class="slide">
-						<%= link_to image_tag("slide-3.jpg"),root_path %>
-						<div class="caption">
-							<p>Happy Bokeh raining Day</p>
-						</div>
-					</div>
-					<div class="slide">
-						<%= link_to image_tag("slide-4.jpg"),root_path %>
-						<div class="caption">
-							<p>We Eat Light</p>
-						</div>
-					</div>
-					<div class="slide">
-						<%= link_to image_tag("slide-1.jpg"),root_path %>
-						<div class="caption">
-							<p>&ldquo;I must go down to the sea again, to the lonely sea and the sky...&rdquo;</p>
-						</div>
-					</div>
-					<div class="slide">
-						<%= link_to image_tag("slide-1.jpg"),root_path %>
-						<div class="caption">
-							<p>twelve.inch</p>
-						</div>
-					</div>
-					<div class="slide">
-						<%= link_to image_tag("slide-1.jpg"),root_path %>
-						<div class="caption">
-							<p>Save my love for loneliness</p>
-						</div>
-					</div>
-				</div>
-				
-			</div>
+					<%= render @slides %>
+				</div>	
+		</div>
 
 	</div>
-	<div class="span4">fwfew</div>
+	<div class="span4">
+		<div class="tabbable"> <!-- Only required for left/right tabs -->
+    		  <ul class="nav nav-tabs">
+    			<li class="active"><a href="#tab1" data-toggle="tab">最新贴</a></li>
+    			<li><a href="#tab2" data-toggle="tab">热门贴</a></li>
+    		  </ul>
+    		<div class="tab-content">
+    		  <div class="tab-pane active" id="tab1">
+    			<%= @newest_topics.each do |newest_topic| %>
+				<%= newest_topic.title %>
+			<% end %>
+    		</div>
+    		<div class="tab-pane" id="tab2">
+    			<p>Howdy, I'm in Section 2.</p>
+    		</div>
+    	       </div>
+    </div>
+
+	</div>
 	<div class="span4">243fds</div>
      </div>
 </div>

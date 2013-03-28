@@ -3,7 +3,8 @@ class ForumsController < ApplicationController
   # GET /forums.json
   def index
     @forums = Forum.all
-
+    @slides = Slide.all
+    @newest_topics=Topic.order(:created_at).limit(2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @forums }

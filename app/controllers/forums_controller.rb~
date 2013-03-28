@@ -3,7 +3,8 @@ class ForumsController < ApplicationController
   # GET /forums.json
   def index
     @forums = Forum.all
-
+    @slides = Slide.all
+    @newest_topics=Topic.all.order(:created_at).limit(2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @forums }
@@ -11,7 +12,7 @@ class ForumsController < ApplicationController
   end
 
  def show
-  @forum=Forum.find(params[:forum_id])
+  @forum=Forum.find(params[:id])
   redirect_to forum_topics_path(@forum)
  end
   # GET /forums/new
