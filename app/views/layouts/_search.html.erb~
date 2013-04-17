@@ -1,7 +1,4 @@
 
-
-
-<div class="container">
 <div  class="row" id="search_div">
 
 <div class="span3">
@@ -12,10 +9,10 @@
   </div>
 <% end %>
 </div>
-<div class="span4" style="margin:5px;"> 推荐搜索</div>
+<div class="span4" style="margin-top:5px;"> 推荐搜索</div>
 <div class="span3">
 <%= link_to "上传视频", new_upload_path, :class=>'btn'%>
 </div>
 </div>
-</div>
+
 

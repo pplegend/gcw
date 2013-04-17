@@ -1,29 +1,107 @@
-<h1>Listing musics</h1>
+<div class="row">
+<div class="span8">
+<p class="alert alert-info">广场舞音乐下载</p>
 
-<table>
-  <tr>
-   
-    <th>Video file name</th>
-    <th>Counter</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table table-striped">
+
 
 <% @musics.each do |music| %>
   <tr>
     
-    <td><%= music.video_file_name %></td>
-    <td><%= music.counter %></td>
+    <td>
+	<% 
+	  music_name=music.video_file_name 
+	  last_p=music_name.rindex('.')
+	  music_name[last_p,4]=""
+	%>
+	<%= link_to music_name, music %>
+    </td>
+    <td>
+	<%= link_to "<i class='icon-headphones'></i> 试听".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=>music.id %>
+    </td>
+    <td>
+	<%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=>music.id %> 
+    </td>
+
+    <% if signed_in? && current_user.has_role?("Administrator") %>
+        <td><%= music.counter %></td>
     <td><%= link_to 'Show', music %></td>
     <td><%= link_to 'Edit', edit_music_path(music) %></td>
     <td><%= link_to 'Destroy', music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   <% end %>
   </tr>
- <%= link_to "#{music.video_file_name}", :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=music.id %> 
 
+ 
 <% end %>
 </table>
 
-<br />
-
+</div>
+</div>
 <%= link_to 'New Music', new_music_path %>
+
+<div class="jp-audio">
+                <div class="jp-type-single">
+                    <div id="jquery_jplayer_2" class="jp-jplayer"></div>
+                    <div id="jp_interface_2" class="jp-interface">
+                        <ul class="jp-controls">
+                            <li><a href="#" class="jp-play" tabindex="1">play</a></li>
+                            <li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+                            <li><a href="#" class="jp-stop" tabindex="1">stop</a></li>
+                            <li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
+                            <li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
+                        </ul>
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                            </div>
+                        </div>
+                        <div class="jp-volume-bar">
+                            <div class="jp-volume-bar-value"></div>
+                        </div>
+                        <div class="jp-current-time"></div>
+                        <div class="jp-duration"></div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+<div style="display: none;">
+    <div id="logindiv" style="width:400px;height:100px;overflow: hidden;">
+        You div with login data and input fields
+    </div>
+</div>
+<a id="loginbutton" href="#logindiv" title="enter your login details here">Login Here</a>
+<script>
+$(document).ready(function(){
+
+    $("#jquery_jplayer_2").jPlayer({
+        ready: function () {
+            $(this).jPlayer("setMedia", {
+                oga: "http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg"
+            }); // auto play
+        },
+ 	cssSelectorAncestor: "#jp_interface_2",
+	solution:"flash,html",
+        swfPath: "swf",
+        supplied: "oga"
+    })
+    .bind($.jPlayer.event.play, function() { // pause other instances of player when current one play
+            $(this).jPlayer("pauseOthers");
+    });
+
+
+});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#loginbutton").fancybox({
+            'titleShow'     : true,
+            'transitionIn'  : 'elastic',
+            'transitionOut' : 'elastic',
+        });
+    });
+</script>
+        

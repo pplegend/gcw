@@ -81,13 +81,10 @@ class MusicsController < ApplicationController
     end
   end
    def download
-	@music = Music.find(params[:fileid])
-	last_p=params[:filename].rindex('.')
-	file_name_2=params[:filename]
-	file_name_2[last_p,4]=".mp4"
-
+	@music = Music.find(params[:fileid]) #test.mp3
+	file_name=params[:filename]+".mp4"	
 	file_path="#{Rails.root}/public"+File.join(
-  		File.dirname(params[:filepath]),file_name_2)
+  		File.dirname(params[:filepath]),file_name)
 	file_name=params[:filename]
       if File.exist?(file_path)
         #send_file file_path,:disposition => 'inline'
