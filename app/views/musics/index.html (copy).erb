@@ -25,8 +25,8 @@
 	
     </td>
     <td>
-	
-	<%= link_to "<i class='icon-headphones'></i>试听".html_safe, music.video(:mobile), :class=>"topopup" %>
+	<input type="hidden" value="<%= file_path %>" />
+	<%= link_to "<i class='icon-headphones'></i>试听".html_safe, "#", :class=>"topopup" %>
     </td>
     <td>
 	<%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=>music.id %> 
@@ -90,25 +90,25 @@
 
 $(document).ready(function(){
 /**********************js for pop up div***********************/
-	$("a.topopup").click(function(e) {
-			e.preventDefault();
-			
-			
+	$("a.topopup").click(function() {
+			$("#video").val($(this).prev().val());
+			//$(this).prev().val();
 			loading(); // loading
 			setTimeout(function(){ // then show popup, deley in .5 second
 				loadPopup(); // function show popup
 			}, 500); // .5 second
-			return false;
+	return false;
 	});
 
 	/* event for close the popup */
 	$("div.close").hover(
-			function() {
-				$('span.ecs_tooltip').show();
-				},
-			function () {
-    				$('span.ecs_tooltip').hide();
-  				});
+					function() {
+						$('span.ecs_tooltip').show();
+					},
+					function () {
+    					$('span.ecs_tooltip').hide();
+  					}
+				);
 
 	$("div.close").click(function() {
 		disablePopup();  // function close pop up
@@ -118,6 +118,11 @@ $(document).ready(function(){
 		if (event.which == 27) { // 27 is 'Ecs' in the keyboard
 			disablePopup();  // function close pop up
 		}
+	});
+
+	$('a.livebox').click(function() {
+		alert('Hello World!');
+	return false;
 	});
 
 	 
@@ -146,17 +151,14 @@ $(document).ready(function(){
 			$("#backgroundPopup").fadeOut("normal");
 			popupStatus = 0;  // and set value to 0
 		}
-	};
+	}
 	/************** end: functions. **************/
-});
-
 
    /*****************************js for play music by jPlayer***********************/
-   $(document).ready(function(){
     $("#jquery_jplayer_2").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {
-                oga: '<%= asset_path "/system/musics/videos/000/000/004/mobile/test.ogg" %>'
+                oga: $("#video").val()
             }); // auto play
         },
  	cssSelectorAncestor: "#jp_interface_2",

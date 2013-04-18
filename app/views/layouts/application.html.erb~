@@ -10,7 +10,9 @@
 <div class="container">
    <%= render "layouts/nav" %>
    <%= render "layouts/search" %>
+   <div class="container">
    <%= yield %>
+   </div>
 </div>
 </body>
 </html>

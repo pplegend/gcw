@@ -4,20 +4,29 @@
 
 <table class="table table-striped">
 
-
+    
 <% @musics.each do |music| %>
   <tr>
-    
+
     <td>
 	<% 
 	  music_name=music.video_file_name 
 	  last_p=music_name.rindex('.')
 	  music_name[last_p,4]=""
+	  full_music_name=music_name+".ogg"
 	%>
 	<%= link_to music_name, music %>
+
+	
+	<% 
+		file_path="#{Rails.root}/public"+File.join(
+  		File.dirname(music.video(:mobile)),full_music_name)
+	%>
+	
     </td>
     <td>
-	<%= link_to "<i class='icon-headphones'></i> 试听".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=>music.id %>
+	
+	<%= link_to "<i class='icon-headphones'></i>试听".html_safe, music.video(:mobile), :class=>"topopup" %>
     </td>
     <td>
 	<%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=>music.id %> 
@@ -39,6 +48,10 @@
 </div>
 <%= link_to 'New Music', new_music_path %>
 
+<div id="toPopup">
+<div class="close"></div>
+<span class="ecs_tooltip">按"ESC"键关闭 <span class="arrow"></span></span>
+<div id="popup_content">
 <div class="jp-audio">
                 <div class="jp-type-single">
                     <div id="jquery_jplayer_2" class="jp-jplayer"></div>
@@ -67,14 +80,83 @@
             </div>
 
         </div>
-
+</div>
+</div>
+<input  id="video" /> 
+<div class="loader"></div>
+<div id="backgroundPopup"></div>
 <script>
-$(document).ready(function(){
 
+
+$(document).ready(function(){
+/**********************js for pop up div***********************/
+	$("a.topopup").click(function(e) {
+			e.preventDefault();
+			
+			
+			loading(); // loading
+			setTimeout(function(){ // then show popup, deley in .5 second
+				loadPopup(); // function show popup
+			}, 500); // .5 second
+			return false;
+	});
+
+	/* event for close the popup */
+	$("div.close").hover(
+			function() {
+				$('span.ecs_tooltip').show();
+				},
+			function () {
+    				$('span.ecs_tooltip').hide();
+  				});
+
+	$("div.close").click(function() {
+		disablePopup();  // function close pop up
+	});
+
+	$(this).keyup(function(event) {
+		if (event.which == 27) { // 27 is 'Ecs' in the keyboard
+			disablePopup();  // function close pop up
+		}
+	});
+
+	 
+	function loading() {
+		$("div.loader").show();
+	}
+	function closeloading() {
+		$("div.loader").fadeOut('normal');
+	}
+
+	var popupStatus = 0; // set value
+
+	function loadPopup() {
+		if(popupStatus == 0) { // if value is 0, show popup
+			closeloading(); // fadeout loading
+			$("#toPopup").fadeIn(0500); // fadein popup div
+			$("#backgroundPopup").css("opacity", "0.7"); // css opacity, supports IE7, IE8
+			$("#backgroundPopup").fadeIn(0001);
+			popupStatus = 1; // and set value to 1
+		}
+	}
+
+	function disablePopup() {
+		if(popupStatus == 1) { // if value is 1, close popup
+			$("#toPopup").fadeOut("normal");
+			$("#backgroundPopup").fadeOut("normal");
+			popupStatus = 0;  // and set value to 0
+		}
+	};
+	/************** end: functions. **************/
+});
+
+
+   /*****************************js for play music by jPlayer***********************/
+   $(document).ready(function(){
     $("#jquery_jplayer_2").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {
-                oga: "http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg"
+                oga: '<%= asset_path "/system/musics/videos/000/000/005/mobile/test.ogg" %>'
             }); // auto play
         },
  	cssSelectorAncestor: "#jp_interface_2",
@@ -88,6 +170,8 @@ $(document).ready(function(){
 
 
 });
+
+
 </script>
 
 
