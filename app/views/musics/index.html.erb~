@@ -26,10 +26,10 @@
     </td>
     <td>
 	
-	<%= link_to "<i class='icon-headphones'></i>试听".html_safe, music.video(:mobile), :class=>"topopup" %>
+	<%= link_to "<i class='icon-headphones'></i>试听".html_safe, music.video(:original), :class=>"topopup" %>
     </td>
     <td>
-	<%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:mobile), :fileid=>music.id %> 
+	<%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:original), :fileid=>music.id %> 
     </td>
 
     <% if signed_in? && current_user.has_role?("Administrator") %>
@@ -82,7 +82,6 @@
         </div>
 </div>
 </div>
-<input  id="video" /> 
 <div class="loader"></div>
 <div id="backgroundPopup"></div>
 <script>
@@ -156,13 +155,18 @@ $(document).ready(function(){
     $("#jquery_jplayer_2").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {
-                oga: '<%= asset_path "/system/musics/videos/000/000/004/mobile/test.ogg" %>'
+		
+                mp3: '<%= asset_path "/system/musics/videos/000/000/005/original/test.mp3" %>'
             }); // auto play
         },
  	cssSelectorAncestor: "#jp_interface_2",
-	solution:"flash,html",
+	solution:"html,flash",
         swfPath: "swf",
-        supplied: "oga"
+	wmode: "window",
+	preload:'metadata',
+	errorAlerts: false,
+	warningAlerts: false,
+        supplied: "mp3"
     })
     .bind($.jPlayer.event.play, function() { // pause other instances of player when current one play
             $(this).jPlayer("pauseOthers");

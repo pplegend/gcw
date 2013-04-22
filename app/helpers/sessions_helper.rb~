@@ -3,10 +3,7 @@ module SessionsHelper
      deny_access unless signed_in?
    end
    def sign_in(user)
-     
-     
      cookies.permanent.signed[:remember_token]=[user.id,user.salt]
- 
      current_user=user
    end
    def sign_out
@@ -18,7 +15,7 @@ module SessionsHelper
    end
    def check_role(role)
     unless signed_in? && current_user.has_role?(role)
-      flash[:error]="You do not have the permission to do that"
+      flash[:error]='请管理员身份登录完成此操作'
       redirect_to signin_path
     end
    end

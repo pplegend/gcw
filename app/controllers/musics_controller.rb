@@ -1,9 +1,11 @@
 class MusicsController < ApplicationController
+
+  before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /musics
   # GET /musics.json
   def index
-    @musics = Music.all
-
+    @musics = Music.paginate(:page => params[:page],:per_page => 10).order('created_at DESC')
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @musics }
@@ -14,7 +16,9 @@ class MusicsController < ApplicationController
   # GET /musics/1.json
   def show
     @music = Music.find(params[:id])
-
+    @newest_musics=Music.limit(10).order('created_at asc')
+    @hot_musics=Music.limit(10).order('counter desc')
+    @recomand_musics=Music.limit(10)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @music }
@@ -82,7 +86,7 @@ class MusicsController < ApplicationController
   end
    def download
 	@music = Music.find(params[:fileid]) #test.mp3
-	file_name=params[:filename]+".mp4"	
+	file_name=params[:filename]+".mp3"	
 	file_path="#{Rails.root}/public"+File.join(
   		File.dirname(params[:filepath]),file_name)
 	file_name=params[:filename]

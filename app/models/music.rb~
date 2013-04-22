@@ -2,8 +2,30 @@ class Music < ActiveRecord::Base
   attr_accessible :counter, :video, :video_file_name
 
    has_attached_file :video, :styles => {
-    :mobile => {:geometry => "400x300", :format => 'oga', :streaming => true}
+    :mobile => {:geometry => "400x300", :format => 'ogg', :streaming => true}
   }, :processors => [:ffmpeg, :qtfaststart]
  
+   def next
+    if Music.last.id > id
+       next_music=Music.where("id > ?", id).order("id ASC").first 
+       link_to next_music.video_file_name, next_music
+    else
+      "no next music"
+    end
+  end
 
+  def prev
+      if Music.first.id < id
+       prev_music=Music.where("id < ?", id).order("id ASC").first
+       link_to prev_music.video_file_name, prev_music
+    else
+      "no next music"
+    end
+  end
+  def name
+ 
+    last=video_file_name.rindex('.')
+    video_file_name[7,4]=""
+    video_file_name
+  end
 end

@@ -1,0 +1,10 @@
+<div class="span4">
+	<p class="alert alert-info">最新广场舞曲下载</p>
+	<ul>
+	<% @newest_musics.each do |music| %>
+		<li>
+		<%= music.video_file_name %> 
+		</li>
+	<% end %>
+	</ul>
+</div>

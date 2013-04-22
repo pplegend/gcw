@@ -15,7 +15,7 @@ module SessionsHelper
    end
    def check_role(role)
     unless signed_in? && current_user.has_role?(role)
-      flash[:error]="You do not have the permission to do that"
+      flash[:error]='log in as admin'
       redirect_to signin_path
     end
    end

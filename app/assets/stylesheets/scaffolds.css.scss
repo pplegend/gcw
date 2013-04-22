@@ -1,6 +1,6 @@
 body {
   background-color: #fff;
-  color: #333;
+  color: #0865C6;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -63,5 +63,20 @@ div {
  color:#088A08;
  font:bold;
 }
-
+.music_title{
+ margin:0 auto;
+ text-align:center;
+ color:#0865C6;
+ font-size:250%;
+}
+.music_download_link{
+ width:200px;
+ height:50px;
+ background-color:#B3E2FE;
+ text-align:center;
+  margin:0 auto;
+  font-size:250%;
+  padding-top:15px;
+  margin:15px;
+}
 
