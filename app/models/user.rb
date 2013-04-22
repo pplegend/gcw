@@ -2,18 +2,18 @@ require 'digest'
 class User < ActiveRecord::Base
 
   email_regex= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  attr_accessible :username, :email, :password, :password_confirmation, :profile, :last_login_at
+  attr_accessible :username, :email, :enabled,:role_ids,:password, :password_confirmation, :profile, :last_login_at
   attr_accessor :password
   validates :username, :presence=>true,
                    :length =>{:maximum=>50 }
   validates :email, :presence=>true,
                     :format=> {:with => email_regex},
-                    :uniqueness=>{:case_sensitive=>false}
+                    :uniqueness=>{:case_sensitive=>false}, :on=> :create
   validates :password, :presence => true,
                        :confirmation =>true,
-                       :length =>{:within=>6..40}
-  validates :profile, :length=>{:maximum=>1000}
-  before_save :encrypt_password
+                       :length =>{:within=>6..40}, :on=> :create
+  validates :profile, :length=>{:maximum=>1000}, :on=> :create
+  before_save :encrypt_password, :except=> :update
   has_and_belongs_to_many :roles
   has_many :uploads
   def has_role?(role_name)
@@ -34,6 +34,14 @@ class User < ActiveRecord::Base
   def self.authenticate_with_salt(id,cookie_salt)
        user= find_by_id(id)
        (user && user.salt == cookie_salt) ? user : nil
+  end
+
+  def self.status(user)
+    if user.enabled
+	"Active"
+    else 
+	"Inactive"
+    end
   end
   private
     def encrypt_password

@@ -11,18 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :video %><br />
-    <%= f.text_field :video %>
-  </div>
-  <div class="field">
-    <%= f.label :video_file_name %><br />
-    <%= f.text_field :video_file_name %>
-  </div>
-  <div class="field">
-    <%= f.label :counter %><br />
-    <%= f.number_field :counter %>
-  </div>
+ <p>
+    <label>upload Music </label>
+    <%= f.file_field :video %>
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>

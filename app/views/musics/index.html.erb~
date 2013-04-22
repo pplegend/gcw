@@ -43,7 +43,7 @@
  
 <% end %>
 </table>
-
+<div ><%= page_navigation_links(@musics) %></div>
 </div>
 </div>
 <%= link_to 'New Music', new_music_path %>

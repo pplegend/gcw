@@ -1,6 +1,6 @@
 <div class="span4">
 	<p class="alert alert-info">最新广场舞曲下载</p>
-	<ul>
+	<ul class="nav nav-pills nav-stacked">
 	<% @newest_musics.each do |music| %>
 		<li>
 		<%= link_to music.video_file_name, music %> 

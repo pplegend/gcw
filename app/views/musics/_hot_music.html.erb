@@ -1,1 +1,10 @@
-<div class="span4"><p class="alert alert-info">热门广场舞曲下载</p></div>
+<div class="span4">
+	<p class="alert alert-info">热门广场舞曲下载</p>
+	<ul class="nav nav-pills nav-stacked">
+	<% @hot_musics.each do |music| %>
+		<li>
+		<%= link_to music.video_file_name, music %> 
+		</li>
+	<% end %>
+	</ul>
+</div>

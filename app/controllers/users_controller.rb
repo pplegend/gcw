@@ -60,6 +60,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+	 @user.role_ids=[]
+	 params[:role_ids].each do |role_id|
+	   @user.roles << Role.find(role_id)
+	 end
+	
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
       else

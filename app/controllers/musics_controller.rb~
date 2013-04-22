@@ -7,7 +7,7 @@ class MusicsController < ApplicationController
     @musics = Music.paginate(:page => params[:page],:per_page => 10).order('created_at DESC')
     @newest_musics=Music.limit(10).order('created_at asc')
     @hot_musics=Music.limit(10).order('counter desc')
-    @recomand_musics=Music.limit(10)
+    @recomand_musics=Music.limit(6)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @musics }
@@ -18,7 +18,9 @@ class MusicsController < ApplicationController
   # GET /musics/1.json
   def show
     @music = Music.find(params[:id])
-
+    @newest_musics=Music.limit(10).order('created_at asc')
+    @hot_musics=Music.limit(10).order('counter desc')
+    @recomand_musics=Music.limit(10)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @music }

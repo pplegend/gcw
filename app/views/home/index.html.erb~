@@ -10,11 +10,7 @@
 		<div class="span4" style="margin-left:0;">
 		<p class="alert alert-info"> 推荐视频</p>
 		</div>
-		<div class="span4">
-		<p class="alert alert-info"> 推荐歌曲</p>
-		</div>
-
-
+		<%= render 'musics/recomand_music' %>
 
 		<div class="span4" >
 			  <%= render @uploads %>
@@ -45,6 +41,9 @@
 
 		<div class="span4" >
 		<p class="alert alert-info"> 广场舞论坛</p>
+		</div>
+
+		<div class="span4">
 		</div>
   	</div>
 

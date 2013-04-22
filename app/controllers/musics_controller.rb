@@ -5,7 +5,9 @@ class MusicsController < ApplicationController
   # GET /musics.json
   def index
     @musics = Music.paginate(:page => params[:page],:per_page => 10).order('created_at DESC')
-    
+    @newest_musics=Music.limit(10).order('created_at asc')
+    @hot_musics=Music.limit(10).order('counter desc')
+    @recomand_musics=Music.limit(10)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @musics }
