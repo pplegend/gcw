@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :check_administrator_role, :only=> :destroy
   # GET /users
   # GET /users.json
   def index

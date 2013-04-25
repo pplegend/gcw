@@ -2,8 +2,8 @@
 	<ul class="breadcrumb">
   		<li><a href="/">主页</a> <span class="divider">/</span></li>
 		<li><%= link_to "广场舞论坛", forums_path %><span class="divider">/</span></li>
-  		<li><%= link_to @topic.forum.name,@topic.forum, :class=>"active" %> <span class="divider">/</span></li>
-  	
+  		<li><%= link_to @topic.forum.name,@topic.forum %> <span class="divider">/</span></li>
+  		<li><%= link_to @topic.title, @topic , :class=>"active" %><span class="divider">/</span></li>
 	</ul>
 </div>
 

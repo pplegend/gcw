@@ -1,0 +1,6 @@
+
+/* Replace the count of comments */
+$(".<%=@image.id%>_comments_count").html("<%= pluralize(@image.comments.count, 'Comment') %>");
+
+/* Reset the comment form */
+$("#new_comment")[0].reset();

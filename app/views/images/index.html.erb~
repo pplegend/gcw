@@ -1,0 +1,60 @@
+<div id="main">
+ 
+<% @images.each do |image| %>
+
+    <div class="box">
+      <div class="button_group">
+    	<button  class="btn comment_button"> Comment</button>
+	<% @image=image %>
+	<%= render 'rates/rate_form'%>
+      </div>
+
+    <%= link_to image_tag(image.image.url(:medium)), image %>
+    <p class="title_popover line-background" data-content="<%= image.description %>"></p>
+
+    <p><span class="<%=image.id%>_image_rate">
+       <% if image.rates.first %><%= image.rates.first.rate %> likes
+       <% else %> 0 like
+       <% end %></span>
+
+    <span class="<%=image.id%>_comments_count">
+     <% if image.comments.first %><%= image.comments.count %> comments
+       <% else %> 0 comment
+       <% end %></span></p>
+    <div class="comment_div">
+       <%= render "comments/comment_form" %>
+    </div>
+    </div>
+<% end %>
+
+</div>
+
+<script>
+	var $container = $('#main');
+
+	$container.imagesLoaded( function(){
+  	$container.masonry({
+    	  itemSelector : '.box'
+  		});
+	});
+	//button on top of image
+
+      
+     $('img').mouseout(function(){
+      $(this).parent().prev().css('display','none');
+   });
+     $('img').mouseover(function(){
+      $(this).parent().prev().css('display','inline');
+   });
+    $('.button_group').mouseout(function(){
+      $(this).css('display','none');
+   });
+     $('.button_group').mouseover(function(){
+      $(this).css('display','inline');
+   });
+    //comment button click
+  $('.comment_button').click(function(){
+   $(this).parent().siblings(".comment_div").css("display","block");
+});
+  $('.title_popover').popover('hide');
+</script>

@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /news
   # GET /news.json
   def index

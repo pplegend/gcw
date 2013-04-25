@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_filter :authenticate, :only=> [:new, :create, :destroy]
   # GET /topics
   # GET /topics.json
    before_filter :authenticate, :only=> [:new,:create, :destroy]

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -62,7 +63,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
 	 @user.role_ids=[]
 	 params[:role_ids].each do |role_id|
-	   @user.roles << Role(role_id)
+	   @user.roles << Role.find(role_id)
 	 end
 	
         format.html { redirect_to @user, notice: 'User was successfully updated.' }

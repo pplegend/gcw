@@ -1,0 +1,39 @@
+.box {
+    background-color: #FFFFFF;
+    border: 1px solid #DEDEDE;
+    border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    padding: 4px;
+    width: 220px;
+}
+
+
+
+
+/**css for image button**/
+
+.button_group{
+ position:absolute;
+ top:2px;
+ left:10px;
+ margin:0px;
+padding:0px;
+display:none;
+width:100%;
+}
+
+
+
+form#new_comment button{
+float:right;
+margin-right:6px;
+}
+.comment_div{
+display:none;
+}
+
+.button_group form#new_rate{
+  position:absolute;
+  top:1px;
+  left:115px;
+}

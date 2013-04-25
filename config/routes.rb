@@ -1,11 +1,20 @@
 Guangchangwu::Application.routes.draw do
 
-  resources :slides
+  
 
+
+   resources :images do
+     resources :comments
+   end
+  resources :slides
+  resources :images
   resources :musics
   resources :topics, :only=>[:create,:destroy]
   resources :forums do 
     resources :topics 
+  end
+  resources :images do
+   resources :rates
   end
   resources :news
   resources :posts

@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.click_count=@topic.click_count+1
     @topic.save
-    @posts=@topic.posts.paginate(:page => params[:page],:per_page => 2).order('created_at DESC')
+    @posts=@topic.posts.paginate(:page => params[:page],:per_page => 2).order('created_at ASC')
     @post=Post.new
     respond_to do |format|
       format.html # show.html.erb

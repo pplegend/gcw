@@ -1,10 +1,12 @@
 class ForumsController < ApplicationController
+  before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /forums
   # GET /forums.json
   def index
     @forums = Forum.all
     @slides = Slide.all
-    @newest_topics=Topic.order(:created_at).limit(2)
+    @newest_topics=Topic.order("created_at DESC").limit(6)
+    @hot_topics=Topic.order("posts_count DESC").limit(6)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @forums }

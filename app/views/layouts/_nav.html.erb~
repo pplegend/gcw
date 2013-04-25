@@ -9,7 +9,7 @@
 		<li><a href="#">广场舞教学视频</a></li>
 		<li><%= link_to "论坛", forums_path %></li>
 		
-		<li><a href="#">图片</a></li>
+		<li><%= link_to "图片", images %></li>
 		<li class="<%= 'active' if params[:controller] == 'news' %>"><a href="/news">新闻</a></li>
 		<li><a href="#">活动</a></li>
 		<li><a href="#">团体</a></li>
@@ -20,7 +20,7 @@
 		<li><a href="<%= signup_path %>">注册</a></li>
 	  <ul class="nav nav-pills">
     		<li class="dropdown" >
-       		<a class="dropdown-toggle dropdown-signin" data-toggle="dropdown">sign in<b class="caret"></b></a>
+       		<a class="dropdown-toggle dropdown-signin" data-toggle="dropdown">登录<b class="caret"></b></a>
    		</li>
 	</ul>
 	<% else %>

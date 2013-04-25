@@ -25,16 +25,9 @@
 	<div id="post-notice"></div>
 </div>
 
-<div class="container">
-<%= button_tag(type: 'submit', class: "btn btn-primary", id:"topic_form") do %>
- <i class="icon-plus"></i> 发贴
-<% end %>
-<%= page_navigation_links @posts %>
-</div>
-<div class="messagepop pop container">
- <%= render "topics/form" %>
-</div>
 
+
+<%= page_navigation_links @posts %>
 
 <div class="container">
  <div class="row">

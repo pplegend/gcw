@@ -1,0 +1,5 @@
+
+/* Replace the count of comments */
+$(".<%=@image.id%>_comments_count").html("<%= pluralize(@image.comments.count, 'Comment') %>");
+
+

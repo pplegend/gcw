@@ -1,0 +1,47 @@
+
+<div class="container ">
+  <div class="row">
+    <div class="span5">
+    
+        <div class="radio_box"><%= image_tag @image.image.url(:medium) %>
+        	     <div class="well image_details">
+       					<p><i class="icon-info-sign"></i><%= @image.description %></p>
+    			</div>
+        </div> 
+
+     <%= render 'rates/rate_form'%>   
+  </div>
+
+    <div class="span4 radio_box"> 
+       <% if current_user && current_user.admin? %>
+       <%= link_to 'Edit', edit_image_path(@image) %>
+       <%= link_to 'Destroy', @image, :confirm => 'Are you sure?', :method => :delete %><% end %>
+       
+   <div class="show_page_right">
+   <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+        
+      <a class="addthis_button_preferred_1"></a>
+      <a class="addthis_button_preferred_2"></a>
+      <a class="addthis_button_preferred_3"></a>
+      <a class="addthis_button_preferred_4"></a>
+      <a class="addthis_button_compact"></a>
+      <a class="addthis_counter addthis_bubble_style"></a>
+   </div>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ff5f2756c34f6f9"></script>
+    <br/>
+<%= render "comments/comment_form" %>
+
+<div id="comments" >
+  <%= render @comments %>
+  </div><%= page_navigation_links @comments %></div>
+</div>
+  </div>
+  </div>
+
+
+</div>
+</div>
+
+  
+
+
