@@ -5,9 +5,13 @@
     cursor: pointer;
     padding: 4px;
     width: 220px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
-
+.box img{
+   display:block;
+}
 
 
 /**css for image button**/

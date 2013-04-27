@@ -30,6 +30,7 @@
 </div>
 <div ><%= page_navigation_links(@images) %></div>
 <script>
+$(document).ready(function(){
 	var $container = $('#main');
 
 	$container.imagesLoaded( function(){
@@ -55,6 +56,9 @@
     //comment button click
   $('.comment_button').click(function(){
    $(this).parent().siblings(".comment_div").css("display","block");
+   $container.masonry();
 });
   $('.title_popover').popover('hide');
+
+});
 </script>

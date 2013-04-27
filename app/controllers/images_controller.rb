@@ -52,7 +52,7 @@ class ImagesController < ApplicationController
    # @product.categories.create
     respond_to do |format|
       if @image.save
-	    
+	 
         format.html { redirect_to(@image, :notice => 'Image was successfully created.') }
         format.xml  { render :xml => @image, :status => :created, :location => @image }
       else

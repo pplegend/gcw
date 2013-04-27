@@ -12,11 +12,10 @@
    <%= render "layouts/nav" %>
    <%= render "layouts/search" %>
    <div class="container">
-   <% if flash[:error] %>
-    <%= flash[:error] %>
-   <% end %>
+   <%= render "layouts/notice_div" %>
    <%= yield %>
    </div>
 </div>
+<p>fewfe<%= current_user.id %></p>
 </body>
 </html>

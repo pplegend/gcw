@@ -1,6 +1,6 @@
 
 
-<%= form_for [@forum, Topic.new ] do |f| %>
+<%= form_for [@forum, @topic ] do |f| %>
     <%= f.hidden_field :forum_id %>
     <%= f.hidden_field :user_id, :value=>current_user.id %>
 

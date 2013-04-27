@@ -1,4 +1,5 @@
 class RatesController < ApplicationController
+  before_filter :authenticate, :only=> :create
     def index
     @image=image.find(params[:image_id])
     @rates = @image.rates
@@ -11,19 +12,20 @@ class RatesController < ApplicationController
 
   def create
     @image=Image.find(params[:image_id])
-    @rate=@image.rates.create(params[:rate]) unless @rate=Rate.find_by_image_id(@image.id)
-     rate=@rate.rate+1
      
+     if @rate=Rate.find_by_image_id_and_user_id(@image.id,params[:rate][:user_id])
+	@rate.rate=@rate.rate+1
+     else
+	@rate=Rate.new(:rate=>1,:image_id=>params[:image_id],:user_id=>params[:rate][:user_id])
+     end
     respond_to do |format|
-      if @rate.update_attributes(:rate=>rate)
-        
+      if @rate.save
         format.html { redirect_to(@image, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @image, :status => :created, :location => @image }
         format.js 
       else
-        format.html { :notice => 'Comment was successfully created.' }
-        format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
+	return true
       end
+     
     end
   end
 

@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+   before_filter :authenticate, :only=> :create
+
   def index
    @image=Image.find(params[:image_id])
     @comments = @image.comments.paginate(:page=> params[:page])

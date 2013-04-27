@@ -5,18 +5,29 @@
     cursor: pointer;
     padding: 4px;
     width: 220px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
-
-
-
-/**css for image button
-
-.comment_button{
- float:left;
- margin-right:54px;
+.box img{
+   display:block;
 }
-**/
+
+/**
+* Some extra styles to randomize heights of grid items.
+*/
+.box div:nth-child(3n) {
+height: 175px;
+}
+
+.box div:nth-child(4n-3) {
+padding-bottom: 30px;
+}
+
+.box div:nth-child(5n) {
+height: 250px;
+}
+/**css for image button**/
 
 .button_group{
  position:absolute;

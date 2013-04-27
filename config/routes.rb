@@ -1,8 +1,5 @@
 Guangchangwu::Application.routes.draw do
 
-  
-
-
    resources :images do
      resources :comments
    end
