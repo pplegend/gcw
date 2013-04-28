@@ -88,7 +88,7 @@ class MusicsController < ApplicationController
   end
    def download
 	@music = Music.find(params[:fileid]) #test.mp3
-	file_name=params[:filename]+".mp3"	
+	file_name=params[:filename]	
 	file_path="#{Rails.root}/public"+File.join(
   		File.dirname(params[:filepath]),file_name)
 	file_name=params[:filename]

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-   before_filter :authenticate, :only=> :create
+   before_filter :authenticate_image, :only=> :create
 
   def index
    @image=Image.find(params[:image_id])

@@ -1,4 +1,7 @@
 module SessionsHelper
+   def authenticate_image
+
+   end
    def authenticate
      deny_access unless signed_in?
    end
@@ -27,8 +30,12 @@ module SessionsHelper
      end
    def deny_access
       store_location
-      redirect_to root_path 
+      redirect_to signin_path
       
+   end
+   def deny_access_image
+      session[:return_to]='/images/'
+      render :js=>"window.location='/signin/'"
    end
    def current_user?(user)
       user==current_user

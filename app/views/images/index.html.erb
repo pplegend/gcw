@@ -13,7 +13,7 @@
     <p class="title_popover line-background" data-content="<%= image.description %>"></p>
 
     <p><span class="<%=image.id%>_image_rate">
-       <% if image.rates.first %><%= image.rates.first.rate %> likes
+       <% if image.rates.first %><%= image.rates.sum(:rate) %> 喜欢
        <% else %> 0 like
        <% end %></span>
 

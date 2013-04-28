@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+
   def index
    @images=Image.paginate(:page => params[:page],:per_page => 10).order('created_at DESC')
   end

@@ -9,13 +9,8 @@
   <tr>
 
     <td>
-	<% 
-	  music_name=music.video_file_name 
-	  last_p=music_name.rindex('.')
-	  music_name[last_p,4]=""
-	  full_music_name=music_name+".ogg"
-	%>
-	<%= link_to music_name, music %>
+
+	<%= link_to music.video_file_name, music %>
 
 	
 	<% 
@@ -44,6 +39,11 @@
 <% end %>
 </table>
 <div ><%= page_navigation_links(@musics) %></div>
+</div>
+<div class="span4">
+  	<%= render 'newest_music' %>
+       <%= render 'hot_music' %>
+       <%= render 'recomand_music' %>
 </div>
 </div>
 <%= link_to 'New Music', new_music_path %>
