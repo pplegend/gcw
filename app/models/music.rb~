@@ -7,8 +7,8 @@ class Music < ActiveRecord::Base
  
    def next
     if Music.last.id > id
-       next_music=Music.where("id > ?", id).order("id ASC").first 
-       link_to next_music.video_file_name, next_music
+       Music.where("id > ?", id).order("id ASC").first.video_file_name 
+       
     else
       "no next music"
     end
@@ -16,8 +16,8 @@ class Music < ActiveRecord::Base
 
   def prev
       if Music.first.id < id
-       prev_music=Music.where("id < ?", id).order("id ASC").first
-       link_to prev_music.video_file_name, prev_music
+       Music.where("id < ?", id).order("id ASC").first.video_file_name 
+      
     else
       "no next music"
     end

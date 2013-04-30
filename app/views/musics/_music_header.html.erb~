@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="span8">
+	<p class="alert alert-info">广场舞音乐下载</p>
+	<ul class="nav nav-pills">
+	  <li style="margin-bottom:10px;">
+ 		<%= link_to "全部", musics_path,:class=>"link_border" %>
+	  </li>
+<% @music_categories.each do |music_category| %>
+ <li style="margin-bottom:10px;">
+ <%= link_to music_category.name, music_category, :class=>"link_border" %>
+ </li>
+<% end %>
+</ul>
+<% if @musics %>
+  <table class="table table-striped">
+    <%= render @musics %>
+  </table>
+<% else %>
+   <p>No result</p>
+<% end %>
+<div ><%= page_navigation_links(@musics) %></div>
+</div>
+
+<div class="span4">
+  	<%= render 'newest_music' %>
+       <%= render 'hot_music' %>
+       <%= render 'recomand_music' %>
+</div>
+</div>

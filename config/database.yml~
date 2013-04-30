@@ -8,6 +8,7 @@ development:
   encoding: unicode
   database: rails
   pool: 5
+  host: localhost
   username: postgres
   password: feng197162
 
@@ -21,7 +22,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: guangchangwu
+  username: root
+  password: feng197162
+  host: localhost

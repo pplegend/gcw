@@ -3,6 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .link_border{
 padding: 4px 8px 3px;
-margin-right:5px;
+
 border: 1px solid #CDCDCD;
 }

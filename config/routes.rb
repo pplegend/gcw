@@ -1,5 +1,9 @@
 Guangchangwu::Application.routes.draw do
 
+  resources :music_categories do
+    resources :musics
+  end
+
    resources :images do
      resources :comments
    end

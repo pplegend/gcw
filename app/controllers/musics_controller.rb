@@ -8,6 +8,7 @@ class MusicsController < ApplicationController
     @newest_musics=Music.limit(10).order('created_at asc')
     @hot_musics=Music.limit(10).order('counter desc')
     @recomand_musics=Music.limit(10)
+    @music_categories = MusicCategory.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @musics }

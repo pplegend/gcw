@@ -1,13 +1,15 @@
+#!/bin/env ruby
+# encoding: utf-8
 class SessionsController < ApplicationController
   def new
-     @title="Sign in"
+     @title="登录"
   end
 
   def create
      user=User.authenticate(params[:session][:email],params[:session][:password])
      if user.nil?
         flash.now[:error]="Invalid email/password combination"
-        @title ='log out'
+        @title ='退出'
         render 'new'
      else
 	sign_in user

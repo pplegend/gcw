@@ -1,0 +1,4 @@
+class AddMusicCategoryIdToMusic < ActiveRecord::Migration
+  def change
+  end
+end

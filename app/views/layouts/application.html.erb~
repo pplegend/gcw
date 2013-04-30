@@ -16,6 +16,6 @@
    <%= yield %>
    </div>
 </div>
-<p>fewfe<%= current_user.id %></p>
+<iframe height=498 width=510 src="http://player.youku.com/embed/XNTQ5Njc3MTMy" frameborder=0 allowfullscreen></iframe>
 </body>
 </html>

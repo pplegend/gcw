@@ -1,0 +1,3 @@
+class MusicCategory < ActiveRecord::Base
+  attr_accessible :name
+end
