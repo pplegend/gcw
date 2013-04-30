@@ -6,7 +6,7 @@
 		<li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">主页</a></li>
 		<li class="<%= 'active' if params[:controller] == 'uploads' %>"><%= link_to "广场舞视频", uploads_path %></li>
 		<li class="<%= 'active' if params[:controller] == 'musics' %>"><%= link_to "广场舞歌曲下载", musics_path %></li>
-		<li><a href="#">广场舞教学视频</a></li>
+		<li class="<%= 'active' if params[:controller] == 'teach_videos' %>"><%= link_to "广场舞教学视频", teach_videos_path %></li>
 		<li class="<%= 'active' if params[:controller] == 'forums' %>"><%= link_to "论坛", forums_path %></li>
 		
 		<li class="<%= 'active' if params[:controller] == 'images' %>"><%= link_to "图片", images_path %></li>

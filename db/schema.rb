@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430124652) do
+ActiveRecord::Schema.define(:version => 20130430174133) do
 
   create_table "articles", :force => true do |t|
     t.integer  "author_id"
@@ -136,6 +136,17 @@ ActiveRecord::Schema.define(:version => 20130430124652) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "title"
+  end
+
+  create_table "teach_videos", :force => true do |t|
+    t.string   "name"
+    t.string   "source"
+    t.string   "download_link"
+    t.string   "youkuid"
+    t.integer  "group"
+    t.integer  "counter",       :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "topics", :force => true do |t|

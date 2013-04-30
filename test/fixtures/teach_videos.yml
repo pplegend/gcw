@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  source: MyString
+  download_link: MyString
+  youkuid: MyString
+  group: 1
+  counter: 1
+
+two:
+  name: MyString
+  source: MyString
+  download_link: MyString
+  youkuid: MyString
+  group: 1
+  counter: 1

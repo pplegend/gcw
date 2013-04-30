@@ -1,0 +1,33 @@
+<h1>Listing teach_videos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Source</th>
+    <th>Download link</th>
+    <th>Youkuid</th>
+    <th>Group</th>
+    <th>Counter</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @teach_videos.each do |teach_video| %>
+  <tr>
+    <td><%= teach_video.name %></td>
+    <td><%= teach_video.source %></td>
+    <td><%= teach_video.download_link %></td>
+    <td><%= teach_video.youkuid %></td>
+    <td><%= teach_video.group %></td>
+    <td><%= teach_video.counter %></td>
+    <td><%= link_to 'Show', teach_video %></td>
+    <td><%= link_to 'Edit', edit_teach_video_path(teach_video) %></td>
+    <td><%= link_to 'Destroy', teach_video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Teach video', new_teach_video_path %>

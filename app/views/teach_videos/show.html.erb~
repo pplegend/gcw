@@ -1,0 +1,31 @@
+<div class="row" >
+  <div class="span8" style="border:solid 1px #BCE8F1;margin-left:0">
+	<p class="alert alert-info">广场视频教学--<%= @teach_video.name %></p>
+	<h1 class="music_title"><%= @teach_video.name %></h1>
+	<br>
+	<div class="video_content" >
+         <div class="loading_video">  <%= image_tag 'loading.gif' %></div>
+	<embed src=" http://static.youku.com/v1.0.0149/v/swf/qplayer_rtmp.swf?VideoIDS=<%=@teach_video.youkuid %>&isAutoPlay=false" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed> 
+	</div>
+	<div class="music_download_link">
+	   <%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, @teach_video.download_link %>
+	</div>
+	<p><b>广场舞名称:</b><%= @teach_video.name %></p>
+	<p><b>专辑:</b><%= @teach_video.group %></p>
+	<p><b>来源:</b><%= @teach_video.source %></p>
+	<p><b>观看次数:</b><%= @teach_video.counter %></p>
+	<p><b>更新时间:</b><%= @teach_video.updated_at %></p>
+	<hr>
+	<p><b>上一曲:</b><%= @teach_video.prev %>
+	   <b>下一曲:</b><%= @teach_video.next %>
+        </p>
+
+  </div>
+  <div class="span4">
+       <%= render 'newest_teach_videos' %>
+       <%= render 'hot_teach_videos' %>
+       <%= render 'recomand_videos' %>
+   
+   
+  </div>
+</div>

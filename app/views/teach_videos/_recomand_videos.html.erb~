@@ -1,0 +1,11 @@
+
+<div class="span4">
+	<p class="alert alert-info">推荐广场舞曲下载</p>
+	<ul class="nav nav-pills nav-stacked">
+	<% @recomand_teach_videos.each do |teach_video| %>
+		<li>
+		<%= link_to teach_video.name, teach_video %> 
+		</li>
+	<% end %>
+	</ul>
+</div>
