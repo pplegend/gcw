@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 module SessionsHelper
    def authenticate_image
      deny_access_image unless signed_in?
@@ -18,7 +20,7 @@ module SessionsHelper
    end
    def check_role(role)
     unless signed_in? && current_user.has_role?(role)
-      flash[:error]='log in as admin'
+      flash[:error]='只有管理员有此权限！'
       redirect_to signin_path
     end
    end

@@ -1,1 +1,13 @@
-<div class="span4"><p class="alert alert-info">推荐广场舞曲下载</p></div>
+
+<div class="span4">
+	<p class="alert alert-info">推荐广场舞曲下载
+	  <span style="float:right"><%= link_to "查看全部",musics_path %></span>
+	</p>
+	<ul class="nav nav-pills nav-stacked">
+	<% @recomand_musics.each do |music| %>
+		<li>
+		<%= link_to music.video_file_name, music %> 
+		</li>
+	<% end %>
+	</ul>
+</div>

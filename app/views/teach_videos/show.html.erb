@@ -11,7 +11,7 @@
 	   <%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, @teach_video.download_link %>
 	</div>
 	<p><b>广场舞名称:</b><%= @teach_video.name %></p>
-	<p><b>专辑:</b><%= @teach_video.group %></p>
+	<p><b>专辑:</b><%= @teach_video.group.name %></p>
 	<p><b>来源:</b><%= @teach_video.source %></p>
 	<p><b>观看次数:</b><%= @teach_video.counter %></p>
 	<p><b>更新时间:</b><%= @teach_video.updated_at %></p>

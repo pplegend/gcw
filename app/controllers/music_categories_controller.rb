@@ -1,4 +1,5 @@
 class MusicCategoriesController < ApplicationController
+ before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /music_categories
   # GET /music_categories.json
   def index
@@ -15,7 +16,7 @@ class MusicCategoriesController < ApplicationController
   def show
     @music_category = MusicCategory.find(params[:id])
     @music_categories = MusicCategory.all
-    @newest_musics=Music.limit(10).order('created_at asc')
+    @newest_musics=Music.limit(10).order('created_at desc')
     @hot_musics=Music.limit(10).order('counter desc')
     @recomand_musics=Music.limit(10)
     @musics=@music_category.musics.paginate(:page => params[:page],:per_page => 10).order('created_at DESC')

@@ -3,25 +3,55 @@
 <div class="container">
    <div class="row">	
 	<div class="span8 " style="margin-left:0;">
-		<p class="alert alert-info"> 最新上传视频</p>
+		<p class="alert alert-info"> 最新上传视频
+		  <span style="float:right"><%= link_to "查看全部",uploads_path %></span>
+		</p>
 		<div class="newest_videos span8">
 			<%= render @uploads %>
 		</div>
 		<div class="span4" style="margin-left:0;">
-		<p class="alert alert-info"> 推荐视频</p>
-		<%= render @uploads %>
-		</div>
+		<p class="alert alert-info"> 视频教学
+		  <span style="float:right"><%= link_to "查看全部",teach_videos_path %></span>
+		</p>
+		<div style="text-align:center">
+		<% @teach_videos.each do |teach_video| %>
+		  <div class="span2" style="margin-left:0;">
+		<%= link_to image_tag(teach_video.image.url(:thumb)),teach_video %>
+		
+			<p>【<%= link_to teach_video.group.name, teach_video.group %>】</p>
+   			<p><%= link_to teach_video.name,teach_video%></p>
+ 		  </div>
 
-		<%= render 'musics/recomand_music' %>
+		<% end %>
+		</div>
+		</div>
+		<div class="span4"  >
+		   <p class="alert alert-info"> 推荐视频 <span style="float:right">查看全部</span></p>
+		</div>
+		
 
 	
 		
 	     <div class="span8" style="margin-left:0;">
+		<%= render 'musics/recomand_music' %>
+		<div class="span4" >
+		<p class="alert alert-info"> 广场舞活动 <span style="float:right">查看全部</span></p>
+		</div>
+	     </div>
+
+	     <div class="span8" style="margin-left:0;">
 		<div class="span4" style="margin-left:0;">
-		<p class="alert alert-info"> 广场舞团体</p>
+		  <p class="alert alert-info"> 广场舞团体</p>
 		</div>
 		<div class="span4">
-		<p class="alert alert-info"> 广场舞活动</p>
+		  <p class="alert alert-info"> 广场舞新闻</p>
+		  <ul class="nav">
+		  <% @news.each do |news| %>
+		   <li>
+		   <%= news.title%>
+		   </li>
+		  <% end %>
+		  </ul>
 		</div>
 	     </div>
 	</div>
@@ -40,10 +70,14 @@
 
 
 		<div class="span4" >
-		<p class="alert alert-info"> 广场舞论坛</p>
+		 <p class="alert alert-info"> 广场舞论坛</p>
+		  <ul class="nav nav-pills nav-stacked" id="rotated">
+			<%= render @new_topics %>
+		  </ul>
 		</div>
 
 		<div class="span4">
+		 <p class="alert alert-info"> 保健养生</p>
 		</div>
   	</div>
 

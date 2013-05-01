@@ -1,7 +1,7 @@
 <div class="container">
 
 <div class="row">
-<div id="slides" class="offset1 span4">
+<div id="slides" >
 		<div class="slides_container">
 			<%= render @slides %>
 		</div>

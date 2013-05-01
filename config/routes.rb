@@ -1,5 +1,7 @@
 Guangchangwu::Application.routes.draw do
 
+  resources :groups
+
   resources :teach_videos
 
   resources :music_categories do

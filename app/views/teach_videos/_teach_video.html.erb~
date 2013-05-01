@@ -1,0 +1,13 @@
+<tr>
+  <td><%= image_tag teach_video.image.url(:thumb) %></td>
+  <td>
+    <p><b><%= teach_video.name %></b></p> 
+    <p><%= teach_video.group.name %></p>
+    <p>观看次数: <%= teach_video.counter %></p>
+  </td>
+  <td>
+    <p>来源: <%= teach_video.source %></p>
+    <p><%= teach_video.updated_at%></p>
+
+  </td>
+</tr>

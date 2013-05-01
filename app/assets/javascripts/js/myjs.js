@@ -1,4 +1,19 @@
 $(document).ready(function() {
+
+    //home page ul roate
+
+    function run() {
+    //$("li").click(function() {  
+    var prev = $("#rotated li:first-child");
+    $.unique(prev).each(function(i) {
+      $(this).delay(i*600).slideUp(function() {
+        $(this).appendTo(this.parentNode).slideDown();
+      });
+    });
+  //});
+}
+  
+  window.setInterval(run,1500);
           //reply topic button
 		$('.reply_button').click(function(e){
 		var quote_text=$(this).prev().text();
