@@ -1,7 +1,30 @@
-     <div class="row">
+
+ <div class="row">
 	<div class="span4">
-		<div id="slides">
-		  <div class="slides_container"><%= render @slides %></div>	
+		<div class="main_view">
+		  <div class="window">
+			<div class="image_reel">
+		  		<%= link_to image_tag(@slides.first.image), @slides.first.link %>
+				<%= link_to image_tag(@slides.second.image), @slides.second.link %>
+				<%= link_to image_tag(@slides.last.image), @slides.last.link %>
+			</div>
+			<div class="descriptions">
+				<div class="desc" style="display: none;">
+					<p><%= @slides.first.title %></p>
+				</div>
+				<div class="desc" style="display: none;">
+					<p><%= @slides.second.title %></p>
+				</div>
+				<div class="desc" style="display: none;">
+					<p><%= @slides.last.title %></p>
+				</div>
+			</div>
+		  </div>
+		  <div class="paging" style="display: block;">
+		  	<a rel="1" href="#" class="">1</a>
+		 	 <a rel="2" href="#" class="">2</a>
+			<a rel="3" href="#" class="">3</a>
+		 </div>	
 		</div>
 	</div>
 	<div class="span4"><%= render "forums/hot_newest_posts" %></div>

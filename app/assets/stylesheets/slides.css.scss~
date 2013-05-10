@@ -1,124 +1,24 @@
-// Place all the styles related to the Slides controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.slides_container {
-
-display:none;
+*{ margin:0; padding:0; }
 
 
-}
+.window { overflow:hidden;position:relative; width:300px; height:300px;  }
 
+.image_reel { position:absolute; top: 0; left:0; }
 
-.pagination {
-list-style:none;
-margin:0;
-padding:0;
-text-align:center;
-float:right;
-}
-
-.pagination .current a {
-color:red;
-}
-#slides .prev,#slides .next{
-display:none;
-}
+.image_reel img {float:left; margin:0px; width:300px;height:300px; }
 
 
 
-.focusTitle {
-    clear: both;
-    height: 33px;
-    line-height: 30px;
-    margin-left: 16px;
-    border-bottom:1px solid gray;
-}
-.focusTitle h2 {
-    float: left;
-}
-h1, h2, h3, h4, h5, h6 {
-    font-size: 12px;
-    font-weight: normal;
-}
-.focusTitle .time {
-    float: right;
-    padding-right: 6px;
-}
-.cDGray, .cDGray:visited, .cDGray a {
-    color: #727171;
-}
-.colM .content {
-    margin: 0 0 0 16px;
-}
-/**forum slide css ***/
+.paging { padding:0; text-align:center; width:300px; z-index:100; }
 
+.paging a { text-indent:-9999px; background:url(slide-nav-button.png) no-repeat center; width:11px; height:11px; display:inline-block;
+margin:0; border:none; outline:none; }
 
-.slides_container {
-	width:300px;
-	overflow:hidden;
-	position:relative;
-	display:none;
-}
+.paging a.active { background:url(slide-nav-button-hover.png) no-repeat center; border:none; outline:none; }
 
-/*
-	Each slide
-	Important:
-	Set the width of your slides
-	If height not specified height will be set by the slide content
-	Set to display block
-*/
+.paging a:hover {font-weight:bold; border:none; outline:none;}
 
-.slides_container div.slide {
-	width:300px;
-	height:270px;
-	
-}
+.desc { background:url(30w087b.png) repeat scroll 0 0 transparent;width:300px; display:none; position:absolute; bottom: 0; left: 0; margin-left: 0px; margin-bottom: 1px; z-index:101; color:#fff; font-size:12px; padding:10px; border-radius:0 0 3px 0; -moz-border-radius:0 0 3px 0; -khtml-border-radius:0 0 3px 0; -webkit-border-radius:0 0 3px 0; }
 
-.caption {
-	position:absolute;
-	left:0;
-	height:35px;
-	padding:5px 2px 0 2px;
-	background:#000;
-	background:rgba(0,0,0,.5);
-	width:300px;
-	font-size:1.3em;
-	line-height:1.33;
-	color:#fff;
-	border-top:1px solid #000;
-	text-shadow:none;
-}
-/*
-	Pagination
-*/
+.desc p{ font-size: 12px; color: #868686; margin-top:5px; }
 
-#slides .pagination {
-	z-index:500;
-	margin:auto;
-	margin-right:-100px;
-	width:300px;
-}
-
-#slides .pagination li {
-	float:left;
-	margin:0 1px;
-	list-style:none;
-}
-
-#slides .pagination li a {
-	display:block;
-	width:12px;
-	height:0;
-	padding-top:12px;
-	background-image:url('/assets/pagination.png');
-	background-position:0 0;
-	float:left;
-	
-}
-#slides .pagination li.current a {
-	background-position:0 -12px;
-}
-
-.slide_image_size img{
-  height:300px;
-}

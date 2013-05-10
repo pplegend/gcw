@@ -94,53 +94,71 @@ $.fn.slideFadeToggle = function(easing, callback) {
     return this.animate({ opacity: 'toggle', height: 'toggle' }, "fast", easing, callback);
 };
 
-$(function() {
-    var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
-        .text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
-            $("html, body").animate({ scrollTop: 0 }, 120);
-    }), $backToTopFun = function() {
-        var st = $(document).scrollTop(), winh = $(window).height();
-        (st > 0)? $backToTopEle.show(): $backToTopEle.hide();    
-        //IE6下的定位
-        if (!window.XMLHttpRequest) {
-            $backToTopEle.css("top", st + winh - 166);    
-        }
-    };
-    $(window).bind("scroll", $backToTopFun);
-    $(function() { $backToTopFun(); });
+
+
+$(document).ready(
+				  
+function() {
+
+	//Set Default State of each portfolio piece
+	$(".paging").show();
+	$(".paging a:first").addClass("active");
+
+	//Get size of images, how many there are, then determin the size of the image reel.
+	var imageWidth = $(".window").width();
+	var imageSum = $(".image_reel img").size();
+	var imageReelWidth = imageWidth * imageSum;
+	
+	//Adjust the image reel to its new size
+	$(".image_reel").css({'width' : imageReelWidth});
+
+	//Paging + Slider Function
+	rotate = function(){	
+	    var triggerID = $active.attr("rel") - 1; //Get number of times to slide
+	    var image_reelPosition = triggerID * imageWidth; //Determines the distance the image reel needs to slide
+	
+	    $(".paging a").removeClass('active'); //Remove all active class
+	    $active.addClass('active'); //Add active class (the $active is declared in the rotateSwitch function)
+	    
+		$(".desc").stop(true,true).slideUp('slow');
+		
+		$(".desc").eq( $('.paging a.active').attr("rel") - 1 ).slideDown("slow"); 
+		
+	    //Slider Animation
+	    $(".image_reel").animate({ 
+	        left: -image_reelPosition
+	    }, 500 ); 
+	
+		
+	}; 
+
+	//Rotation + Timing Event
+	rotateSwitch = function(){	
+	$(".desc").eq( $('.paging a.active').attr("rel") - 1 ).slideDown("slow");	
+	    play = setInterval(function(){ //Set timer - this will repeat itself every 3 seconds
+	        $active = $('.paging a.active').next();
+	        if ( $active.length === 0) { //If paging reaches the end...
+	            $active = $('.paging a:first'); //go back to first
+	        }
+	        rotate(); //Trigger the paging and slider function
+	    }, 6000); //Timer speed in milliseconds (3 seconds)	
+	
+	};
+	
+	rotateSwitch(); //Run function on launch
+
+ //On Click
+    $(".paging a").click(function() {    
+        $active = $(this); //Activate the clicked paging
+        //Reset Timer
+        clearInterval(play); //Stop the rotation
+        rotate(); //Trigger rotation immediately
+        rotateSwitch(); // Resume rotation
+        return false; //Prevent browser jump to link anchor
+    });    
+
+	
+	
 });
 
-
-		$(function(){
-			$('#slides').slides({
-				preload: true,
-				preloadImage: "url(<%= asset_path 'loading.gif' %>)",
-				play: 5000,
-				pause: 2500,
-				hoverPause: true,
-				animationStart: function(current){
-					$('.caption').animate({
-						bottom:-35
-					},100);
-					if (window.console && console.log) {
-						// example return of current slide number
-						console.log('animationStart on slide: ', current);
-					};
-				},
-				animationComplete: function(current){
-					$('.caption').animate({
-						bottom:0
-					},200);
-					if (window.console && console.log) {
-						// example return of current slide number
-						console.log('animationComplete on slide: ', current);
-					};
-				},
-				slidesLoaded: function() {
-					$('.caption').animate({
-						bottom:0
-					},200);
-				}
-			});
-		});
 
