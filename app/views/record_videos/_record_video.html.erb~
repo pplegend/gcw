@@ -1,8 +1,9 @@
+<% @record_video.each do |record_video| %>
 <tr>
   <td><%= image_tag record_video.image.url(:thumb) %></td>
   <td>
     <p><b><%= link_to record_video.name, record_video %></b></p> 
-    <p><%= link_to record_video.group.name, record_video.tuanti %></p>
+    <p><%= link_to record_video.tuanti.name, record_video.tuanti %></p>
     <p>观看次数: <%= record_video.counter %></p>
   </td>
   <td>
@@ -11,3 +12,4 @@
 
   </td>
 </tr>
+<% end %>

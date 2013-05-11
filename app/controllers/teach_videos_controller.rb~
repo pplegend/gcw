@@ -2,6 +2,13 @@
 # encoding: utf-8 
 class TeachVideosController < ApplicationController
   before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
+  def ajax_show
+    
+   respond_to do |format|
+      
+      format.js { render layout: false }
+    end
+  end
   # GET /teach_videos
   # GET /teach_videos.json
   def index
@@ -26,6 +33,9 @@ class TeachVideosController < ApplicationController
     @hot_contents = TeachVideo.all
     @newest_contents = TeachVideo.all
     @recomand_contents = TeachVideo.all
+    @hot_title="热门广场舞教学视频"
+    @newest_title="最新广场舞教学视频"
+    @recomand_title="推荐广场舞教学视频"
     respond_to do |format|
 	@teach_video.counter=@teach_video.counter+1 
 	@teach_video.save

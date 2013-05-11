@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /groups
   # GET /groups.json
   def index
@@ -82,6 +83,15 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :no_content }
+    end
+  end
+
+  #ajax to change the video content in teach_video index page
+
+  def ajax_show
+    @group = Group.find(params[:id])
+    respond_to do |format|
+      format.js {render :layout => false}
     end
   end
 end

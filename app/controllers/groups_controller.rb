@@ -85,4 +85,14 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #ajax to change the video content in teach_video index page
+
+  def ajax_show
+    @group = Group.find(params[:id])
+    @teach_videos=@group.teach_videos
+    respond_to do |format|
+      format.js {render :layout => false}
+    end
+  end
 end

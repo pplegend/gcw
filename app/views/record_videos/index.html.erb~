@@ -5,7 +5,7 @@
 	<p class="alert alert-info">广场舞上传视频</p>
 	<ul class="nav nav-pills">
 	  <li style="margin-bottom:10px;">
- 		<%= link_to "全部", record_videos_path,:class=>"link_border" %>
+ 		<%= link_to "全部", {:controller => "record_videos", :action=>'ajax_show'}, :remote=>true,:class=>"link_border" %>
 	  </li>
 <% @tuantis.each do |tuanti| %>
  <li style="margin-bottom:10px;">
@@ -14,8 +14,8 @@
 <% end %>
 </ul>
 <% if @record_videos %>
-  <table class="table table-striped">
-    <%= render @record_videos %>
+  <table id="record_video" class="table table-striped">
+    <%= render "record_videos/record_video" %>
   </table>
 <% else %>
    <p>No result</p>
@@ -24,7 +24,9 @@
 </div>
 
 <div class="span4">
-  	
+  	<%= render 'layouts/newest_content' %>
+        <%= render 'layouts/hot_content' %>
+        <%= render 'layouts/recomand_content' %>
    
 </div>
 </div>

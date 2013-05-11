@@ -1,6 +1,13 @@
 #!/bin/env ruby
 # encoding: utf-8
 class RecordVideosController < ApplicationController
+
+  def ajax_show
+     @record_videos=RecordVideo.all
+     respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
   # GET /record_videos
   # GET /record_videos.json
   def index

@@ -1,5 +1,6 @@
 Guangchangwu::Application.routes.draw do
-
+   match '/teach_videos/ajax_show/', :to=>'teach_videos#ajax_show'
+    match '/record_videos/ajax_show/', :to=>'record_videos#ajax_show'
   resources :tuantis
 
   resources :record_videos
@@ -34,6 +35,8 @@ Guangchangwu::Application.routes.draw do
   match '/signout', :to=>'sessions#destroy'
   match '/download', :to=>'musics#download'
   match '/uploads/search', :to=>'uploads#search_uploads'
+  match '/groups/ajax_show/:id', :to=>'groups#ajax_show'
+  match '/tuantis/ajax_show/:id', :to=>'tuantis#ajax_show'
   resources :sessions, :only=>[:new, :create, :destroy]
   root :to=>'home#index'
   resources :users do

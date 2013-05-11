@@ -24,7 +24,12 @@ class RecordVideosController < ApplicationController
   # GET /record_videos/1.json
   def show
     @record_video = RecordVideo.find(params[:id])
-
+    @hot_contents = RecordVideo.all
+    @newest_contents = RecordVideo.all
+    @recomand_contents = RecordVideo.all
+    @hot_title="热门广场舞视频"
+    @newest_title="最新广场舞视频"
+    @recomand_title="推荐广场舞视频"
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @record_video }

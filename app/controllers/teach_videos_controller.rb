@@ -2,6 +2,13 @@
 # encoding: utf-8 
 class TeachVideosController < ApplicationController
   before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
+  def ajax_show
+   @teach_videos=TeachVideo.all
+   respond_to do |format|
+      
+      format.js { render layout: false }
+    end
+  end
   # GET /teach_videos
   # GET /teach_videos.json
   def index

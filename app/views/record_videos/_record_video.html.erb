@@ -1,3 +1,4 @@
+<% @record_videos.each do |record_video| %>
 <tr>
   <td><%= image_tag record_video.image.url(:thumb) %></td>
   <td>
@@ -11,3 +12,4 @@
 
   </td>
 </tr>
+<% end %>

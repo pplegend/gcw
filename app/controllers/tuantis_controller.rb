@@ -1,4 +1,12 @@
 class TuantisController < ApplicationController
+  def ajax_show
+      @tuanti = Tuanti.find(params[:id])
+     @record_videos=@tuanti.record_videos
+     respond_to do |format|
+      
+      format.js { render layout: false }
+    end
+  end
   # GET /tuantis
   # GET /tuantis.json
   def index

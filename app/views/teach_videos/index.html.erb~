@@ -3,28 +3,32 @@
 	<p class="alert alert-info">广场舞视频教学</p>
 	<ul class="nav nav-pills">
 	  <li style="margin-bottom:10px;">
- 		<%= link_to "全部", teach_videos_path,:class=>"link_border" %>
+ 		<%= link_to "全部", {:controller => "teach_videos", :action=>'ajax_show'}, :remote=>true,:class=>"link_border" %>
 	  </li>
 <% @groups.each do |group| %>
  <li style="margin-bottom:10px;">
- <%= link_to group.name, group, :class=>"link_border" %>
+ <%= link_to group.name, {:controller => "groups", :action=>'ajax_show',:id=> group.id}, :remote=>true, :class=>"link_border" %>
  </li>
 <% end %>
 </ul>
-<% if @teach_videos %>
-  <table class="table table-striped">
+
+  <% if @teach_videos %>
+  <table id="video_content" class="table table-striped">
     <%= render @teach_videos %>
   </table>
-<% else %>
+  <% else %>
    <p>No result</p>
-<% end %>
+  <% end %>
+
+
+
 <div ><%= page_navigation_links(@teach_videos) %></div>
 </div>
 
 <div class="span4">
   	<%= render 'layouts/newest_content' %>
-       <%= render 'hot_teach_videos' %>
-       <%= render 'recomand_videos' %>
+       <%= render 'layouts/hot_content' %>
+       <%= render 'layouts/recomand_content' %>
    
 </div>
 </div>
