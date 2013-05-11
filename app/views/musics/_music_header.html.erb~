@@ -3,17 +3,17 @@
 	<p class="alert alert-info">广场舞音乐下载</p>
 	<ul class="nav nav-pills">
 	  <li style="margin-bottom:10px;">
- 		<%= link_to "全部", musics_path,:class=>"link_border" %>
+ 		<%= link_to "全部", {:controller => "musics", :action=>'ajax_show'}, :remote=>true, :class=>"link_border" %>
 	  </li>
 <% @music_categories.each do |music_category| %>
  <li style="margin-bottom:10px;">
- <%= link_to music_category.name, music_category, :class=>"link_border" %>
+ <%= link_to music_category.name, {:controller => "music_categories", :action=>'ajax_show',:id=> music_category.id}, :remote=>true, :class=>"link_border" %>
  </li>
 <% end %>
 </ul>
 <% if @musics %>
-  <table class="table table-striped">
-    <%= render @musics %>
+  <table class="table table-striped" id="music_content">
+    <%= render "music" %>
   </table>
 <% else %>
    <p>No result</p>
@@ -22,8 +22,8 @@
 </div>
 
 <div class="span4">
-  	<%= render 'musics/newest_music' %>
-       <%= render 'musics/hot_music' %>
-       <%= render 'musics/recomand_music' %>
+  	<%= render 'layouts/newest_content' %>
+       <%= render 'layouts/hot_content' %>
+       <%= render 'layouts/recomand_content' %>
 </div>
 </div>

@@ -1,6 +1,14 @@
 class MusicCategoriesController < ApplicationController
+ before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /music_categories
   # GET /music_categories.json
+  def ajax_show
+    @music_category = MusicCategory.find(params[:id])
+    @music= @music_category.musics
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
   def index
     @music_categories = MusicCategory.all
 

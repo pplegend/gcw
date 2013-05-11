@@ -9,7 +9,7 @@
 	<%= link_to "<i class='icon-headphones'></i>试听".html_safe, music.video(:original), :class=>"topopup" %>
     </td>
     <td>
-	<%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :filename => "#{music.video_file_name}", :filepath =>music.video(:original), :fileid=>music.id %> 
+	<%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :controller=>"musics",:filename => "#{music.video_file_name}", :filepath =>music.video(:original), :fileid=>music.id %> 
     </td>
 
     <% if signed_in? && current_user.has_role?("Administrator") %>
