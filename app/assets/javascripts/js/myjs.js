@@ -60,10 +60,12 @@ $(document).ready(function() {
 	});
 
 });
- function deselect() {
-    $(".pop").slideFadeToggle(function() { 
+
+
+function deselect() {
+    $(".pop").slideFadeToggle(function() {
         $("#topic_form").removeClass("selected");
-    });    
+    });
     $("#topic_form").removeAttr("disabled");
      
 }
@@ -71,13 +73,13 @@ $(document).ready(function() {
 $(function() {
     $("#topic_form").live('click', function() {
         if($(this).hasClass("selected")) {
-	  
-            deselect();               
+
+            deselect();
         } else {
             $(this).addClass("selected");
-	      $(this).attr("disabled", "disabled");
-	    $("#topic_list").css("display","none");
-            $(".pop").slideFadeToggle(function() { 
+$(this).attr("disabled", "disabled");
+$("#topic_list").css("display","none");
+            $(".pop").slideFadeToggle(function() {
                 $("#topic_title").focus();
             });
         }
@@ -95,6 +97,7 @@ $.fn.slideFadeToggle = function(easing, callback) {
 };
 
 
+// js for forum slides
 
 $(document).ready(
 				  
@@ -160,5 +163,21 @@ function() {
 	
 	
 });
+//返回顶部
 
+$(function() {
+    var $backToTopTxt = "返回顶部", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
+        .text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
+            $("html, body").animate({ scrollTop: 0 }, 120);
+    }), $backToTopFun = function() {
+        var st = $(document).scrollTop(), winh = $(window).height();
+        (st > 0)? $backToTopEle.show(): $backToTopEle.hide();
+        //IE6下的定位
+        if (!window.XMLHttpRequest) {
+            $backToTopEle.css("top", st + winh - 166);
+        }
+    };
+    $(window).bind("scroll", $backToTopFun);
+    $(function() { $backToTopFun(); });
+});
 

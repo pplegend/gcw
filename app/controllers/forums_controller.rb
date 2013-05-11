@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class ForumsController < ApplicationController
   before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /forums

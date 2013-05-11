@@ -10,7 +10,6 @@ gem "paperclip", "~> 3.0"
 gem 'twitter-bootstrap-rails'
 gem 'jquery-fileupload-rails','~>0.4.0'
 gem 'paperclip-ffmpeg'
-gem 'mysql', '~>2.8.1'
 gem 'mysql2','0.3.12b4'
 gem 'thinking-sphinx', '3.0.0'
 # Gems used only for assets and not required
