@@ -1,0 +1,14 @@
+
+<p>
+  <b>Name:</b>
+  <%= @tuanti.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @tuanti.description %>
+</p>
+
+<%= link_to image_tag(@tuanti.image.url(:medium)),@tuanti %>
+<%= link_to 'Edit', edit_tuanti_path(@tuanti) %> |
+<%= link_to 'Back', tuantis_path %>

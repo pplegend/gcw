@@ -1,13 +1,18 @@
+#!/bin/env ruby
+# encoding: utf-8 
 class TeachVideosController < ApplicationController
-before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
+  before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /teach_videos
   # GET /teach_videos.json
   def index
     @teach_videos = TeachVideo.paginate(:page => params[:page],:per_page => 10).order('created_at DESC')
     @groups= Group.all
-    @hot_teach_videos = TeachVideo.all
-    @newest_teach_videos = TeachVideo.all
-    @recomand_teach_videos = TeachVideo.all
+    @hot_contents = TeachVideo.all
+    @hot_title="热门广场舞教学视频"
+    @newest_title="最新广场舞教学视频"
+    @recomand_title="推荐广场舞教学视频"
+    @newest_contents = TeachVideo.all
+    @recomand_contents = TeachVideo.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @teach_videos }
@@ -18,9 +23,9 @@ before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /teach_videos/1.json
   def show
     @teach_video = TeachVideo.find(params[:id])
-    @hot_teach_videos = TeachVideo.all
-    @newest_teach_videos = TeachVideo.all
-    @recomand_teach_videos = TeachVideo.all
+    @hot_contents = TeachVideo.all
+    @newest_contents = TeachVideo.all
+    @recomand_contents = TeachVideo.all
     respond_to do |format|
 	@teach_video.counter=@teach_video.counter+1 
 	@teach_video.save

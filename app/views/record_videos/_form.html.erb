@@ -1,0 +1,30 @@
+<%= form_for @record_video,:html => { :multipart => true, :class=>'well'}  do |f| %>
+
+
+  <div class="field">
+    <%= f.label :名字 %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :来源 %>
+    <%= f.text_field :source %>
+  </div>
+
+  <div class="field">
+    <%= f.label :忧酷ID %><br />
+    <%= f.text_field :youkuid %>
+  </div>
+  <div class="field">
+    <%= f.label :视频封面 %><br />
+    <%= f.file_field :image , :placeholder=> :image %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :团体 %><br />
+    <%= f.select :tuanti_id, options_for_select(@tuantis.collect{|tuanti| [tuanti.name, tuanti.id]})%>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit '提交', :class=>'btn'%>
+  </div>
+<% end %>

@@ -33,7 +33,7 @@
 	
 		
 	     <div class="span8" style="margin-left:0;">
-		<%= render 'musics/recomand_music' %>
+		<%= render 'recomand_content' %>
 		<div class="span4" >
 		<p class="alert alert-info"> 广场舞活动 <span style="float:right">查看全部</span></p>
 		</div>
@@ -45,7 +45,7 @@
 		</div>
 		<div class="span4">
 		  <p class="alert alert-info"> 广场舞新闻</p>
-		  <ul class="nave">
+		  <ul class="nav">
 		  <% @news.each do |news| %>
 		   <li>
 		   <%= news.title%>

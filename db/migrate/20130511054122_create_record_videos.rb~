@@ -1,0 +1,13 @@
+class CreateRecordVideos < ActiveRecord::Migration
+  def change
+    create_table :record_videos do |t|
+      t.string :name
+      t.string :source
+      t.string :youkuid
+      t.integer :tuanti_id
+      t.integer :counter, :default=>0
+      add_attachment :record_videos, :image
+      t.timestamps
+    end
+  end
+end

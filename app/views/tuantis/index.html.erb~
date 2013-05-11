@@ -1,0 +1,11 @@
+
+<% @tuantis.each do |tuanti| %>
+  <div class="span3" id="tuanti">
+    <%= link_to image_tag(tuanti.image.url(:thumb)),tuanti %>
+    <p class="tuanti_name"><%= tuanti.name %></p>
+    <p class="tuanti_jieshao"><%= tuanti.description %></p>
+  </div>
+<% end %>
+
+
+

@@ -1,5 +1,9 @@
 Guangchangwu::Application.routes.draw do
 
+  resources :tuantis
+
+  resources :record_videos
+
   resources :groups
 
   resources :teach_videos

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130430222141) do
+ActiveRecord::Schema.define(:version => 20130511054518) do
 
   create_table "articles", :force => true do |t|
     t.integer  "author_id"
@@ -122,6 +122,20 @@ ActiveRecord::Schema.define(:version => 20130430222141) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "record_videos", :force => true do |t|
+    t.string   "name"
+    t.string   "source"
+    t.string   "youkuid"
+    t.integer  "tuanti_id"
+    t.integer  "counter",            :default => 0
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -168,6 +182,17 @@ ActiveRecord::Schema.define(:version => 20130430222141) do
     t.datetime "updated_at",                 :null => false
     t.integer  "click_count", :default => 0
     t.integer  "posts_count", :default => 0
+  end
+
+  create_table "tuantis", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "uploads", :force => true do |t|

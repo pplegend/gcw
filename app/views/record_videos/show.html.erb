@@ -1,0 +1,28 @@
+<div class="row" >
+  <div class="span8" style="border:solid 1px #BCE8F1;margin-left:0">
+	<p class="alert alert-info">广场视频--<%= @record_video.name %></p>
+	<h1 class="music_title"><%= @record_video.name %></h1>
+	<br>
+	<div class="video_content" >
+        
+
+        <embed src=" http://static.youku.com/v1.0.0149/v/swf/qplayer_rtmp.swf?VideoIDS=<%=@record_video.youkuid %>&isAutoPlay=false" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed> 
+
+	</div>
+
+	<p><b>广场舞名称:</b><%= @record_video.name %></p>
+	<p><b>专辑:</b><%= @record_video.tuanti.name %></p>
+	<p><b>来源:</b><%= @record_video.source %></p>
+	<p><b>观看次数:</b><%= @record_video.counter %></p>
+	<p><b>更新时间:</b><%= @record_video.updated_at %></p>
+	<hr>
+
+
+  </div>
+  <div class="span4">
+       <%= render 'layouts/newest_content' %>
+       <%= render 'layouts/hot_content' %>
+       <%= render 'layouts/recomand_content' %>
+   
+  </div>
+</div>

@@ -1,7 +1,10 @@
+#!/bin/env ruby
+# encoding: utf-8
 class HomeController < ApplicationController
   def index
     @uploads = Upload.limit(8)
-    @recomand_musics=Music.limit(6)
+    @recomand_contents=Music.limit(6)
+    @recomand_title="推荐广场舞歌曲"
     @news=News.limit(6)
     @new_topics=Topic.limit(5).order("created_at desc")
     @teach_videos= TeachVideo.limit(4).order("counter desc")

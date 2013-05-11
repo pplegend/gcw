@@ -12,8 +12,8 @@
 		<li class="<%= 'active' if params[:controller] == 'images' %>"><%= link_to "图片", images_path %></li>
 		<li class="<%= 'active' if params[:controller] == 'news' %>"><a href="/news">新闻</a></li>
 		<li><a href="#">活动</a></li>
-		<li><a href="#">团体</a></li>
-		<li><a href="#">广场舞服装</a></li>
+		<li class="<%= 'active' if params[:controller] == 'tuantis' %>"><a href="/tuantis">团体</a></li>
+	
 	
 
 	<% unless signed_in? %>

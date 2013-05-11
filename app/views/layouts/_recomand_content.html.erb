@@ -1,0 +1,11 @@
+
+<div class="span4" style="margin-left:0px;">
+	<p class="alert alert-info"><%=  @recomand_title %></p>
+	<ul class="nav nav-pills nav-stacked">
+	<% @recomand_contents.each do |content| %>
+		<li>
+		<%= link_to content.name, content %> 
+		</li>
+	<% end %>
+	</ul>
+</div>

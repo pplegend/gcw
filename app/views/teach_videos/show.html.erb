@@ -4,8 +4,10 @@
 	<h1 class="music_title"><%= @teach_video.name %></h1>
 	<br>
 	<div class="video_content" >
-        
-	<embed src=" http://static.youku.com/v1.0.0149/v/swf/qplayer_rtmp.swf?VideoIDS=<%=@teach_video.youkuid %>&isAutoPlay=false" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed> 
+      
+
+<embed src=" http://static.youku.com/v1.0.0149/v/swf/qplayer_rtmp.swf?VideoIDS=<%=@teach_video.youkuid %>&isAutoPlay=false" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed> 
+
 	</div>
 	<div class="music_download_link">
 	   <%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, @teach_video.download_link %>
@@ -22,10 +24,9 @@
 
   </div>
   <div class="span4">
-       <%= render 'newest_teach_videos' %>
-       <%= render 'hot_teach_videos' %>
-       <%= render 'recomand_videos' %>
-   
+       <%= render 'layouts/newest_content' %>
+       <%= render 'layouts/hot_content' %>
+       <%= render 'layouts/recomand_content' %>
    
   </div>
 </div>

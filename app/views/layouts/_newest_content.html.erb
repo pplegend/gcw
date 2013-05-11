@@ -1,0 +1,10 @@
+<div class="span4" style="margin-left:0px;">
+	<p class="alert alert-info"><%= @newest_title %></p>
+	<ul class="nav nav-pills nav-stacked">
+	<% @newest_contents.each do |content| %>
+		<li>
+		<%= link_to content.name, content %> 
+		</li>
+	<% end %>
+	</ul>
+</div>

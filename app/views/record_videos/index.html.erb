@@ -1,0 +1,32 @@
+
+
+<div class="row">
+  <div class="span8">
+	<p class="alert alert-info">广场舞上传视频</p>
+	<ul class="nav nav-pills">
+	  <li style="margin-bottom:10px;">
+ 		<%= link_to "全部", record_videos_path,:class=>"link_border" %>
+	  </li>
+<% @tuantis.each do |tuanti| %>
+ <li style="margin-bottom:10px;">
+ <%= link_to tuanti.name, tuanti, :class=>"link_border" %>
+ </li>
+<% end %>
+</ul>
+<% if @record_videos %>
+  <table class="table table-striped">
+    <%= render @record_videos %>
+  </table>
+<% else %>
+   <p>No result</p>
+<% end %>
+<div ><%= page_navigation_links(@record_videos) %></div>
+</div>
+
+<div class="span4">
+  	<%= render 'layouts/newest_content' %>
+        <%= render 'layouts/hot_content' %>
+        <%= render 'layouts/recomand_content' %>
+   
+</div>
+</div>

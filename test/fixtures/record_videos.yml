@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  source: MyString
+  youkuid: MyString
+  tuanti_id: 1
+  counter: 1
+
+two:
+  name: MyString
+  source: MyString
+  youkuid: MyString
+  tuanti_id: 1
+  counter: 1

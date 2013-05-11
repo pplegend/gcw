@@ -1,0 +1,19 @@
+<%= form_for(@tuanti) do |f| %>
+
+
+  <div class="field">
+    <%= f.label :团体名字 %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :团体简介 %><br />
+    <%= f.text_field :description %>
+  </div>
+    <div class="field">
+    <%= f.label :团体照片 %><br />
+    <%= f.file_field :image , :placeholder=> :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit "提交", :class=>'btn' %>
+  </div>
+<% end %>

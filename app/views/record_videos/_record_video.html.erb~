@@ -1,0 +1,13 @@
+<tr>
+  <td><%= image_tag record_video.image.url(:thumb) %></td>
+  <td>
+    <p><b><%= link_to record_video.name, record_video %></b></p> 
+    <p><%= link_to record_video.group.name, record_video.tuanti %></p>
+    <p>观看次数: <%= record_video.counter %></p>
+  </td>
+  <td>
+    <p>来源: <%= record_video.source %></p>
+    <p><%= record_video.updated_at%></p>
+
+  </td>
+</tr>

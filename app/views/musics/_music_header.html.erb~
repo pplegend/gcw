@@ -22,8 +22,8 @@
 </div>
 
 <div class="span4">
-  	<%= render 'newest_music' %>
-       <%= render 'hot_music' %>
-       <%= render 'recomand_music' %>
+  	<%= render 'musics/newest_music' %>
+       <%= render 'musics/hot_music' %>
+       <%= render 'musics/recomand_music' %>
 </div>
 </div>

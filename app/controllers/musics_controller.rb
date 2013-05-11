@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8 
 class MusicsController < ApplicationController
 
   before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
@@ -5,10 +7,13 @@ class MusicsController < ApplicationController
   # GET /musics.json
   def index
     @musics = Music.paginate(:page => params[:page],:per_page => 10).order('created_at DESC')
-    @newest_musics=Music.limit(10).order('created_at asc')
-    @hot_musics=Music.limit(10).order('counter desc')
-    @recomand_musics=Music.limit(10)
+    @newest_contents=Music.limit(10).order('created_at asc')
+    @hot_contents=Music.limit(10).order('counter desc')
+    @recomand_contents=Music.limit(10)
     @music_categories = MusicCategory.all
+    @hot_title="热门广场舞曲下载"
+    @recomand_title="推荐广场舞曲下载"
+    @newest_title="最新广场舞曲下载"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @musics }

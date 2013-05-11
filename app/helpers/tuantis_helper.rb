@@ -1,0 +1,2 @@
+module TuantisHelper
+end

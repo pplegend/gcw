@@ -22,8 +22,9 @@
 </div>
 
 <div class="span4">
-  	<%= render 'musics/newest_music' %>
-       <%= render 'musics/hot_music' %>
-       <%= render 'musics/recomand_music' %>
+  	<%= render 'layouts/newest_content' %>
+       <%= render 'hot_teach_videos' %>
+       <%= render 'recomand_videos' %>
+   
 </div>
 </div>

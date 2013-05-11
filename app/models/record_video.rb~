@@ -1,0 +1,3 @@
+class RecordVideo < ActiveRecord::Base
+  attr_accessible :counter, :name, :source, :tuanti_id, :youkuid
+end
