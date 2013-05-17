@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="span8">
+<div class="row" id="music_index_page">
+  <div class="span8" id="music_index_page">
 	<p class="alert alert-info">广场舞音乐下载</p>
 	<ul class="nav nav-pills">
 	  <li style="margin-bottom:10px;">
@@ -10,7 +10,8 @@
  <%= link_to music_category.name, {:controller => "music_categories", :action=>'ajax_show',:id=> music_category.id}, :remote=>true, :class=>"link_border" %>
  </li>
 <% end %>
-</ul>
+	</ul>
+
 <% if @musics %>
   <table class="table table-striped" id="music_content">
     <%= render "music" %>

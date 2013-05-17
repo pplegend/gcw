@@ -25,6 +25,13 @@ class MusicsController < ApplicationController
       format.js { render layout: false }
     end
   end
+
+  def ajax_display
+   @music=Music.find(params[:id])
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
   # GET /musics/1
   # GET /musics/1.json
   def show

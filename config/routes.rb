@@ -2,6 +2,8 @@ Guangchangwu::Application.routes.draw do
    match '/teach_videos/ajax_show/', :to=>'teach_videos#ajax_show'
    match '/record_videos/ajax_show/', :to=>'record_videos#ajax_show'
    match '/musics/ajax_show/', :to=>'musics#ajax_show'
+   match '/teach_videos/ajax_display_page/:id', :to=>'teach_videos#ajax_display_page'
+   match '/musics/ajax_display/', :to=>'musics#ajax_display'
    match '/music_categories/ajax_show/:id', :to=>'music_categories#ajax_show'
   resources :tuantis
 

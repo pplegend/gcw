@@ -1,6 +1,6 @@
 <% @teach_videos.each do |teach_video|  %>
 <tr>
-  <td><%= image_tag teach_video.image.url(:thumb) %></td>
+  <td><%= link_to image_tag(teach_video.image.url(:thumb)),{:controller => "teach_videos", :action=>'ajax_display_page', :id=>teach_video.id}, :remote=>true %></td>
   <td>
     <p><b><%= link_to teach_video.name, teach_video %></b></p> 
     <p><%= link_to teach_video.group.name, teach_video.group %></p>
@@ -13,3 +13,5 @@
   </td>
 </tr>
 <% end %>
+
+

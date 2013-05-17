@@ -3,7 +3,7 @@
 	<p class="alert alert-info">广场舞视频教学</p>
 	<ul class="nav nav-pills">
 	  <li style="margin-bottom:10px;">
- 		<%= link_to "全部", {:controller => "teach_videos", :action=>'ajax_show'}, :remote=>true,:class=>"link_border" %>
+ <%= link_to "全部", {:controller => "teach_videos", :action=>'ajax_show'}, :remote=>true,:class=>"link_border" %>
 	  </li>
 <% @groups.each do |group| %>
  <li style="margin-bottom:10px;">
@@ -14,7 +14,7 @@
 
   <% if @teach_videos %>
   <table id="video_content" class="table table-striped">
-    <%= render @teach_videos %>
+    <%= render "teach_videos/teach_video" %>
   </table>
   <% else %>
    <p>No result</p>

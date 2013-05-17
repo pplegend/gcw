@@ -1,0 +1,2 @@
+
+$("#teach_video_page").html( "<%= escape_javascript( render( :partial => "ajax_show" ) ) %>" );

@@ -1,0 +1,22 @@
+<div class="span8" style="border:solid 1px #BCE8F1;margin-left:0">
+
+	<p class="alert alert-info"> 
+	  <%= link_to "广场舞曲下载", musics_path %><span class="divider">/</span>
+	  <%= @music.video_file_name %>
+	</p>
+	<h1 class="music_title"><%= @music.video_file_name %></h1>
+		
+	<div class="music_download_link">
+	   <%= link_to "<i class='icon-circle-arrow-down'></i> 下载".html_safe, :action => "download", :filename => "#{@music.video_file_name}", :filepath =>@music.video(:original), :fileid=>@music.id %>
+	</div>
+	<p><b>广场舞名称:</b><%= @music.video_file_name %></p>
+	<p><b>下载次数:</b><%= @music.counter %></p>
+	<p><b>更新时间:</b><%= @music.updated_at %></p>
+	<hr>
+	<p><b>上一曲:</b><%= @music.prev %>
+	   <b>下一曲:</b><%= @music.next %>
+        </p>
+	<%= link_to 'Edit', edit_music_path(@music) %> |
+	<%= link_to 'Back', musics_path %>
+  </div>
+

@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8 
 class MusicsController < ApplicationController
-
+ 
   before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
   # GET /musics
   # GET /musics.json
@@ -19,7 +19,12 @@ class MusicsController < ApplicationController
       format.json { render json: @musics }
     end
   end
-
+  def ajax_show
+    @musics = Music.all
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
   # GET /musics/1
   # GET /musics/1.json
   def show

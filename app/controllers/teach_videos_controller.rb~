@@ -2,10 +2,21 @@
 # encoding: utf-8 
 class TeachVideosController < ApplicationController
   before_filter :check_administrator_role, :only=> [:new, :create, :destroy]
-  def ajax_show
-    
-   respond_to do |format|
+  def ajax_display_page
+     @teach_video = TeachVideo.find(params[:id])
+     
+     	@teach_video.counter=@teach_video.counter+1
+     	@teach_video.save
+	@tmp=2
       
+     respond_to do |format|
+        
+      format.js { render layout: false }
+     end
+  end
+  def ajax_show
+   @teach_videos=TeachVideo.all
+   respond_to do |format|
       format.js { render layout: false }
     end
   end

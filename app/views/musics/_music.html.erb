@@ -3,7 +3,7 @@
 <tr>
 <td>
 
-	<%= link_to music.video_file_name, music %>
+	<%= link_to music.video_file_name, {:controller => "musics", :action=>'ajax_display', :id=>music.id}, :remote=>true %>
 
     </td>
     <td>

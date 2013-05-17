@@ -1,6 +1,6 @@
 <% @record_videos.each do |record_video| %>
 <tr>
-  <td><%= image_tag record_video.image.url(:thumb) %></td>
+  <td><%= link_to image_tag(record_video.image.url(:thumb)),record_video %></td>
   <td>
     <p><b><%= link_to record_video.name, record_video %></b></p> 
     <p><%= link_to record_video.tuanti.name, record_video.tuanti %></p>

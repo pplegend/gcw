@@ -1,0 +1,2 @@
+
+$("#music_index_page").html( "<%= escape_javascript( render( :partial => "musics/music" ) ) %>" );
